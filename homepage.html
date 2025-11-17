@@ -13,21 +13,28 @@ let circles = [];
 let colors = {};
 
 function preload() {
-  // <-- Carrega automaticamente o ficheiro CSV
-  table = loadTable("427 n, cat, alch, g, 6ingr 6 quant, inst - DataSet.csv", "csv", "header");
+  // Carrega automaticamente o CSV
+  table = loadTable("dataset.csv", "csv", "header");
 }
 
 function setup() {
-  createCanvas(window.innerWidth, window.innerHeight);
-  background(245);
+  let total = table.getRowCount();
+  let cols = 10;                // 10 círculos por linha
+  let rows = ceil(total / cols);
+
+  let canvasHeight = rows * 120 + 50; // altura suficiente para TODOS
+
+  createCanvas(window.innerWidth - 20, canvasHeight);
 
   assignColors();
   generateCircles();
+
   noLoop();
 }
 
 function assignColors() {
   let ingredients = new Set();
+
   for (let r = 0; r < table.getRowCount(); r++) {
     for (let i = 1; i <= 6; i++) {
       let ing = table.getString(r, "Ingredient" + i);
@@ -35,7 +42,6 @@ function assignColors() {
     }
   }
 
-  // Paleta de cores fixa
   let palette = [
     '#e6194b','#3cb44b','#ffe119','#4363d8','#f58231','#911eb4',
     '#46f0f0','#f032e6','#bcf60c','#fabebe','#008080','#e6beff',
@@ -50,9 +56,10 @@ function assignColors() {
 }
 
 function generateCircles() {
-  circles = [];
+  let total = table.getRowCount();
+  let cols = 10;
 
-  for (let r = 0; r < table.getRowCount(); r++) {
+  for (let r = 0; r < total; r++) {
     let row = table.getRow(r);
     let ingredients = [];
 
@@ -63,8 +70,8 @@ function generateCircles() {
 
     circles.push({
       ingredients,
-      x: (r % 10) * 120 + 80,
-      y: floor(r / 10) * 120 + 80,
+      x: (r % cols) * 120 + 80,
+      y: floor(r / cols) * 120 + 80,
       size: 80
     });
   }
@@ -72,6 +79,7 @@ function generateCircles() {
 
 function draw() {
   background(245);
+
   circles.forEach(c => drawCircle(c));
 }
 
@@ -82,11 +90,12 @@ function drawCircle(c) {
   c.ingredients.forEach(ing => {
     fill(colors[ing] || "#aaa");
     stroke(255);
+    strokeWeight(1);
     arc(c.x, c.y, c.size, c.size, start, start + angleStep, PIE);
     start += angleStep;
   });
 }
+</script>
 
-  </script>
 </body>
 </html>
