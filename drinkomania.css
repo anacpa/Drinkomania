@@ -1,0 +1,82 @@
+/* ------------------ BASE ------------------ */
+
+body {
+    margin: 0;
+    padding: 1%;
+    background-color: rgb(247, 247, 247);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.logo {
+    margin-right: 2%;
+}
+
+.input {
+    background-color: lightgray;
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    margin: 4px;
+   
+}
+
+/* ------------------ LAYOUT MAIN ------------------ */
+
+main {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 100px);
+}
+
+#left {
+    width: 50%;
+    padding: 20px;
+    overflow-y: auto; /* permite scroll se houver muitos cocktails */
+}
+
+/* GRELHA — 4 itens por linha, número ilimitado de linhas */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
+    gap: 30px;
+    padding-right: 20px;
+}
+
+/* Estilo temporário para os círculos dos cocktails */
+.grid .item {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #ffd966;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.grid .item:hover {
+    transform: scale(1.08);
+}
+/* Right Section (texto informativo / toggle futuro) */
+#right {
+    width: 50%;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+#right h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+#right p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 90%;
+}
