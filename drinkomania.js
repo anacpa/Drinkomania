@@ -61,7 +61,7 @@ function populateFilterOptions() {
     allCocktails.forEach(cocktail => {
         // Ingredientes: procuramos Ingredient1, Ingredient2, etc.
         for (let i = 1; i <= 15; i++) { // Assumindo até 15 ingredientes
-            const ingredientKey = `Ingredient ${i}`;
+            const ingredientKey = `Ingredient${i}`;
             if (cocktail[ingredientKey]) {
                 allIngredients.add(cocktail[ingredientKey].trim());
             }
@@ -163,7 +163,7 @@ function applyFilters() {
             matchesIngredient = false;
             // Verifica se o ingrediente selecionado está em qualquer IngredientX
             for (let i = 1; i <= 15; i++) {
-                const ingredientKey = `Ingredient ${i}`;
+                const ingredientKey = `Ingredient${i}`;
                 if (cocktail[ingredientKey] && cocktail[ingredientKey].trim() === selectedIngredient) {
                     matchesIngredient = true;
                     break;
@@ -216,8 +216,8 @@ function updateRightSection(cocktail) {
     // Cria a lista de ingredientes e proporções
     let ingredientsList = '<ul>';
     for (let i = 1; i <= 15; i++) {
-        const ingredientKey = `Ingredient ${i}`;
-        const measureKey = `Measure ${i}`;
+        const ingredientKey = `Ingredient${i}`;
+        const measureKey = `Measure${i}`;
         
         const ingredient = cocktail[ingredientKey];
         const measure = cocktail[measureKey];
