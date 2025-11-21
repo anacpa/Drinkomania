@@ -1,5 +1,26 @@
  
 // Variáveis globais para armazenar os dados e os cocktails a serem exibidos
+// Mapeamento de cores para ingredientes comuns
+const ingredientColors = {
+    "Gin": "#b9f2ff",
+    "Grand Marnier": "#ffb347",
+    "Lemon juice": "#fff44f",
+    "Grenadine": "#e32636",
+    "Amaretto": "#d2b48c",
+    "Baileys irish cream": "#f5e6c8",
+    "Cognac": "#c68642",
+    "Heavy cream": "#fffdd0",
+    "Milk": "#ffffff",
+    "Egg white": "#f8f8ff",
+    "Orange juice": "#ffa500",
+    "Vodka": "#e1e1e1",
+    "Rum": "#f4e2d8",
+    "Tequila": "#e5e4e2",
+    "Triple sec": "#f7cac9",
+    "Sugar": "#fffafa",
+    "Soda water": "#b0e0e6",
+    // Adicione mais ingredientes e cores conforme necessário
+};
 let allCocktails = [];
 let filteredCocktails = [];
 let selectedCocktail = null; // Armazena o cocktail atualmente selecionado
@@ -127,13 +148,44 @@ function renderCocktails(cocktailsToRender) {
             item.classList.add('active');
         });
         
-        // Estilo temporário: Tenta adicionar imagem (ou fallback) e nome
-        const thumbUrl = cocktail.DrinkThumb;
-        if (thumbUrl) {
-            item.style.backgroundImage = `url('${thumbUrl}')`;
-            item.style.backgroundSize = 'cover';
-            item.style.backgroundPosition = 'center';
-            item.style.backgroundColor = 'transparent'; // Remove a cor amarela de fundo
+
+        // Obter ingredientes e medidas
+        let ingredients = [];
+        let measures = [];
+        for (let i = 1; i <= 15; i++) {
+            const ingredientKey = `Ingredient${i}`;
+            const measureKey = `Measure${i}`;
+            if (cocktail[ingredientKey] && cocktail[ingredientKey].trim() !== "") {
+                ingredients.push(cocktail[ingredientKey].trim());
+                measures.push(cocktail[measureKey] ? cocktail[measureKey].trim() : "");
+            }
+        }
+
+        // Calcular proporções (simples: cada ingrediente igual se não houver medida)
+        let total = 0;
+        let parsedMeasures = measures.map(m => {
+            // Extrai número da medida, se possível
+            let num = parseFloat(m);
+            if (isNaN(num)) return 1;
+            return num;
+        });
+        total = parsedMeasures.reduce((a, b) => a + b, 0);
+        if (total === 0) total = parsedMeasures.length;
+
+        // Criar divisões coloridas usando CSS linear-gradient
+        let colorStops = [];
+        let currentPercent = 0;
+        for (let i = 0; i < ingredients.length; i++) {
+            let color = ingredientColors[ingredients[i]] || '#cccccc';
+            let percent = (parsedMeasures[i] / total) * 100;
+            let nextPercent = currentPercent + percent;
+            colorStops.push(`${color} ${currentPercent}% ${nextPercent}%`);
+            currentPercent = nextPercent;
+        }
+        if (colorStops.length > 0) {
+            item.style.background = `conic-gradient(${colorStops.join(', ')})`;
+        } else {
+            item.style.background = '#ffe066';
         }
         
         // Adiciona um overlay para o nome da bebida
