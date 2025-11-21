@@ -14,16 +14,12 @@ const cupSelect = document.getElementById('cup');
 /**
  * Pré-carrega os dados do arquivo JSON antes da configuração do p5.
  * Usamos loadJSON do p5.js.
+ * p5 garante que o setup só arranca depois do json estar carregado
  */
 function preload() {
-    // Certifique-se que o arquivo drinks.json está na mesma pasta
-    loadJSON('drinks.json', loadedData => {
-        allCocktails = loadedData;
-        filteredCocktails = allCocktails;
-    }, error => {
-        console.error('Failed to load drinks.json:', error);
-    });
+    allCocktails = loadJSON('drinks.json');
 }
+
 
 /**
  * Configuração inicial do p5 (não desenharemos no canvas, mas usaremos sua estrutura).
@@ -32,24 +28,22 @@ function setup() {
     // Esconder o canvas do p5, pois estamos a manipular o DOM
     // createCanvas(0, 0); // Para garantir que o p5.js seja inicializado
     noCanvas();
-    
+
+    filteredCocktails = allCocktails;
+
     // Inicializa os filtros e a grelha
-    if (allCocktails.length > 0) {
-        populateFilterOptions();
-        renderCocktails(filteredCocktails);
-    } else {
-        // Se a carga falhar, exibe uma mensagem no console
-        console.error("No cocktail data loaded or data is empty.");
-    }
+    populateFilterOptions();
+    renderCocktails(filteredCocktails);
     
     // Adiciona event listeners aos filtros
     ingredientSelect.addEventListener('change', applyFilters);
     alcoholSelect.addEventListener('change', applyFilters);
     cupSelect.addEventListener('change', applyFilters);
-    
+
     // Inicializa a secção de detalhes
     updateRightSection(null);
 }
+
 
 // O loop draw() do p5.js pode ser deixado vazio, pois o trabalho é baseado em eventos DOM
 function draw() {
