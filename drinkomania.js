@@ -17,7 +17,10 @@ const cupSelect = document.getElementById('cup');
  * p5 garante que o setup só arranca depois do json estar carregado
  */
 function preload() {
-    allCocktails = loadJSON('drinks.json');
+    // Use p5.js loadJSON with callback to ensure array
+    allCocktails = loadJSON('drinks.json', (data) => {
+        allCocktails = Array.isArray(data) ? data : Object.values(data);
+    });
 }
 
 
@@ -34,11 +37,16 @@ function setup() {
     // Inicializa os filtros e a grelha
     populateFilterOptions();
     renderCocktails(filteredCocktails);
-    
+
     // Adiciona event listeners aos filtros
     ingredientSelect.addEventListener('change', applyFilters);
     alcoholSelect.addEventListener('change', applyFilters);
     cupSelect.addEventListener('change', applyFilters);
+
+    // Sempre repopula ingredientes ao clicar
+    ingredientSelect.addEventListener('click', () => {
+        populateFilterOptions();
+    });
 
     // Inicializa a secção de detalhes
     updateRightSection(null);
@@ -62,12 +70,12 @@ function populateFilterOptions() {
         // Ingredientes: procuramos Ingredient1, Ingredient2, etc.
         for (let i = 1; i <= 15; i++) { // Assumindo até 15 ingredientes
             const ingredientKey = `Ingredient${i}`;
-            if (cocktail[ingredientKey]) {
+            if (cocktail[ingredientKey] && cocktail[ingredientKey].trim() !== "") {
                 allIngredients.add(cocktail[ingredientKey].trim());
             }
         }
         // Copos
-        if (cocktail['Glass type']) {
+        if (cocktail['Glass type'] && cocktail['Glass type'].trim() !== "") {
             allCups.add(cocktail['Glass type'].trim());
         }
     });
