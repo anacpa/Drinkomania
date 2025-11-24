@@ -187,12 +187,6 @@ function renderCocktails(cocktailsToRender) {
         } else {
             item.style.background = '#ffe066';
         }
-        
-        // Adiciona um overlay para o nome da bebida
-        const nameOverlay = document.createElement('span');
-        nameOverlay.textContent = cocktail.Drink;
-        nameOverlay.classList.add('cocktail-name-overlay'); 
-        item.appendChild(nameOverlay);
 
         gridElement.appendChild(item);
     });
