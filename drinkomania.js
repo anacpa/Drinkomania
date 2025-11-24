@@ -178,6 +178,7 @@ function renderCocktails(cocktailsToRender) {
 }
 
 /**
+ * ========================================================================= FILTERS
  * Aplica os filtros selecionados e atualiza a grelha.
  */
 function applyFilters() {
@@ -227,6 +228,7 @@ function applyFilters() {
 /**
  * Atualiza o conteúdo da secção #right com os detalhes do cocktail.
  * @param {Object|null} cocktail - O objeto cocktail a exibir, ou null para o texto inicial.
+ *  * ========================================================================= LADO DIREITO
  */
 function updateRightSection(cocktail) {
     rightSection.innerHTML = ''; // Limpa o conteúdo
