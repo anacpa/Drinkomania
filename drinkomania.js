@@ -1,6 +1,5 @@
  
-// Variáveis globais para armazenar os dados e os cocktails a serem exibidos
-// Mapeamento de cores para ingredientes comuns
+// array de cores para ingredientes liquidos
 const ingredientColors = {
     "Gin": "#b9f2ff",
     "Grand Marnier": "#ffb347",
@@ -17,15 +16,14 @@ const ingredientColors = {
     "Rum": "#f4e2d8",
     "Tequila": "#e5e4e2",
     "Triple sec": "#f7cac9",
-    "Sugar": "#fffafa",
     "Soda water": "#b0e0e6",
-    // Adicione mais ingredientes e cores conforme necessário
 };
+
 let allCocktails = [];
 let filteredCocktails = [];
-let selectedCocktail = null; // Armazena o cocktail atualmente selecionado
+let selectedCocktail = null; // armazena o cocktail atualmente selecionado
 
-// Referências aos elementos HTML
+// elementos HTML
 const gridElement = document.querySelector('.grid');
 const rightSection = document.getElementById('right');
 const ingredientSelect = document.getElementById('ingredient');
@@ -33,12 +31,12 @@ const alcoholSelect = document.getElementById('alcohol');
 const cupSelect = document.getElementById('cup');
 
 /**
- * Pré-carrega os dados do arquivo JSON antes da configuração do p5.
- * Usamos loadJSON do p5.js.
+ * pré-carrega os dados do arquivo JSON antes da configuração do p5.
+ * usamos loadJSON do p5.js.
  * p5 garante que o setup só arranca depois do json estar carregado
  */
 function preload() {
-    // Use p5.js loadJSON with callback to ensure array
+    // use p5.js loadJSON with callback to ensure array
     allCocktails = loadJSON('drinks.json', (data) => {
         allCocktails = Array.isArray(data) ? data : Object.values(data);
     });
@@ -76,7 +74,6 @@ function setup() {
 
 // O loop draw() do p5.js pode ser deixado vazio, pois o trabalho é baseado em eventos DOM
 function draw() {
-    // Opcional: deixamos vazio
 }
 
 /**
