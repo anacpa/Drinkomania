@@ -18,8 +18,9 @@ const cupSelect = document.getElementById('cup');
  */
 function preload() {
     // use p5.js loadJSON with callback to ensure array
+    
     allCocktails = loadJSON('drinks.json', (data) => {
-        allCocktails = Array.isArray(data) ? data : Object.values(data);
+      allCocktails = Array.isArray(data) ? data : Object.values(data);
     });
 }
 
@@ -67,7 +68,7 @@ function populateFilterOptions() {
 
     allCocktails.forEach(cocktail => {
         // Ingredientes: procuramos Ingredient1, Ingredient2, etc.
-        for (let i = 1; i <= 15; i++) { // Assumindo até 15 ingredientes
+        for (let i = 1; i <= 7; i++) { // Assumindo até 7 ingredientes
             const ingredientKey = `Ingredient${i}`;
             if (cocktail[ingredientKey] && cocktail[ingredientKey].trim() !== "") {
                 allIngredients.add(cocktail[ingredientKey].trim());
