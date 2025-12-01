@@ -82,3 +82,49 @@ main {
 }
 
 
+/*      ESTILOS PARA A VISUALIZAÇÃO DO COPO NA SECÇÃO #right
+   ========================================================================= */
+
+/* O contêiner pai que define o tamanho da visualização */
+.glass-container {
+    position: relative;
+    width: 250px; /* Ajuste para o tamanho visual desejado */
+    height: 350px; 
+    margin: 20px auto; 
+}
+
+/* O elemento que será preenchido com o gradiente de cores */
+.drink-fill {
+    position: absolute;
+       top: 11%;
+    left: 0;
+    width: 100%; /* Ocupa 100% do .glass-container */
+    height: 100%; /* Ocupa 100% do .glass-container */
+    z-index: 1; /* Fica por baixo da imagem do copo */
+    
+    /* Configuração da máscara: Usa a imagem da máscara para definir a área de corte */
+    /* Isso garante que o preenchimento (o gradiente) seja cortado na forma da máscara */
+    mask-repeat: no-repeat;
+    mask-size: contain; /* Ajusta a máscara ao tamanho do elemento */
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: center;
+}
+
+/* A imagem do copo (contorno) */
+.glass-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Garante que o contorno fique visível por cima do preenchimento */
+}
+
+
+/* Estilo para o lado esquerdo (os círculos) */
+.grid .item {
+    border-radius: 50%;
+    /* Outros estilos de tamanho e layout */
+}
