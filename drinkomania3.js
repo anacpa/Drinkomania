@@ -15,28 +15,28 @@ const cupSelect = document.getElementById('cup');
 
 // Mapeamento dos tipos de copos (Glass type) para os arquivos genéricos (A a G)
 const glassTypeMap = [
-    { "item": "Cocktail glass", "glassType": "A" },
-    { "item": "Highball glass", "glassType": "B" },
-    { "item": "Collins glass", "glassType": "B" },
-    { "item": "Old-fashioned glass", "glassType": "D" },
-    { "item": "Shot glass", "glassType": "F" },
-    { "item": "Coffee mug", "glassType": "C" },
-    { "item": "Champagne flute", "glassType": "E" },
-    { "item": "Balloon glass", "glassType": "E" },
-    { "item": "Hurricane glass", "glassType": "E" },
-    { "item": "Irish coffee cup", "glassType": "C" },
-    { "item": "Margarita glass", "glassType": "G" },
-    { "item": "Wine glass", "glassType": "E" },
-    { "item": "Pilsner glass", "glassType": "B" },
-    { "item": "Beer mug", "glassType": "C" },
-    { "item": "Nick and Nora glass", "glassType": "E" },
-    { "item": "Pint glass", "glassType": "B" },
-    { "item": "Pitcher", "glassType": "B" },
-    { "item": "Cordial glass", "glassType": "B" },
-    { "item": "Copper Mug", "glassType": "C" },
-    { "item": "Jar", "glassType": "C" },
-    { "item": "Mason jar", "glassType": "C" },
-    { "item": "Pousse cafe glass", "glassType": "E" }
+    { "item": "Cocktail glass", "glassType": "A", "style": "width: 60%; max-height: 80%;" }, // Exemplo: Copo A é mais estreito
+    { "item": "Highball glass", "glassType": "B", "style": "width: 40%; max-height: 80%;" }, // Exemplo: Copo B
+    { "item": "Collins glass", "glassType": "B", "style": "width: 40%; max-height: 80%;" },
+    { "item": "Old-fashioned glass", "glassType": "D", "style": "width: 60%; max-height: 80%;" }, // Exemplo: Copo D é mais largo
+    { "item": "Shot glass", "glassType": "F", "style": "width: 30%; max-height: 100%;" },
+    { "item": "Coffee mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Champagne flute", "glassType": "E", "style": "width: 40%; max-height: 100%;" },
+    { "item": "Balloon glass", "glassType": "E", "style": "width: 40%; max-height: 100%;" },
+    { "item": "Hurricane glass", "glassType": "E", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Irish coffee cup", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Margarita glass", "glassType": "G", "style": "width: 50%; max-height: 80%;" },
+    { "item": "Wine glass", "glassType": "E", "style": "width: 40%; max-height: 100%;" },
+    { "item": "Pilsner glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
+    { "item": "Beer mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Nick and Nora glass", "glassType": "E", "style": "width: 40%; max-height: 100%;" },
+    { "item": "Pint glass", "glassType": "B", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Pitcher", "glassType": "B", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Cordial glass", "glassType": "B", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Copper Mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Jar", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Mason jar", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Pousse cafe glass", "glassType": "E", "style": "width: 40%; max-height: 100%;" }
 ];
 
 
@@ -44,26 +44,14 @@ const glassTypeMap = [
 // FUNÇÕES AUXILIARES DE COPOS E PROPORÇÕES
 // =========================================================================
 
-// ????????? devia alterar os tamanhos!
-//  
-/*
- const glassVisualsMap = {
-    // [código]: { width: 'W%', height: 'H%', fillHeight: P% }
-    'A': { width: '25%', height: '50%', fillHeight: 30 }, // Cocktail glass (50% de preenchimento para visual)
-    'B': { width: '30%', height: '40%', fillHeight: 50 }, // Highball, Collins, etc. (100% de preenchimento)
-    'C': { width: '60%', height: '75%', fillHeight: 100 }, // Coffee mug, Beer mug, etc.
-    'D': { width: '55%', height: '35%', fillHeight: 80 }, // Old-fashioned glass
-    'E': { width: '55%', height: '95%', fillHeight: 50 }, // Champagne flute, Wine glass (50% de preenchimento para visual)
-    'F': { width: '40%', height: '50%', fillHeight: 100 }, // Shot glass
-    'G': { width: '80%', height: '85%', fillHeight: 80 }, // Margarita glass (50% de preenchimento para visual)
-};
 
 /**
  * Retorna o código (letra) do copo com base no seu nome.
  */
 function getGlassCode(glassTypeName) {
+   const defaultMapping = { "glassType": "B", "style": "width: 40%; max-height: 100%;" };
     const mapping = glassTypeMap.find(item => item.item.toLowerCase() === glassTypeName.toLowerCase());
-    return mapping ? mapping.glassType : 'B'; // 'B' como default
+    return mapping ? mapping : defaultMapping; // Retorna o objeto completo
 }
 
 /**
@@ -353,6 +341,8 @@ function updateRightSection(cocktail) {
     rightSection.innerHTML = ''; // Limpa o conteúdo
     
    if (!cocktail) {
+
+    
         // Exibe o texto inicial
         rightSection.innerHTML = `
             <h2>Cocktails</h2>
@@ -369,7 +359,9 @@ function updateRightSection(cocktail) {
     const glassType = cocktail['Glass type'] || 'Unknown Glass';
     
     // 1. Obter a letra do copo (A, B, C, etc.)
-    const glassCode = getGlassCode(glassType); 
+    const glassMapping = getGlassCode(glassType); // Agora retorna o objeto
+const glassCode = glassMapping.glassType; 
+const imageStyle = glassMapping.style; 
     
     // 2. Determinar a altura de preenchimento (nova lógica)
     // Se for A, E, ou G, a altura é 50%; caso contrário, 100%.
@@ -386,8 +378,12 @@ function updateRightSection(cocktail) {
     }else if (glassCode === 'E') {  //wine glass
         fillHeight = 50;
         topOffset = 47; // E
+
+     }else if (glassCode === 'F') {  //shot glass
+        fillHeight = 85;
+        topOffset = 31; // F
     } else  {
-        fillHeight = 95; // Restantes: B, C, D, F, 
+        fillHeight = 95; // Restantes: B, C, D, 
         topOffset = 4;
          }
     // 3. Construir os URLs
@@ -411,7 +407,7 @@ function updateRightSection(cocktail) {
             
             <div class="glass-container">
                 <div class="drink-fill" id="drinkFill"></div>
-                <img src="${cupImageURL}" alt="${glassType}" class="glass-image">
+                <img src="${cupImageURL}" alt="${glassType}" class="glass-image" style="${imageStyle}">
             </div>
 
             <p><strong>Type:</strong> ${cocktail['Alcoholic type'] || 'N/A'}</p>

@@ -84,13 +84,15 @@ main {
 
 /*      ESTILOS PARA A VISUALIZAÇÃO DO COPO NA SECÇÃO #right
    ========================================================================= */
-
-
+.cocktail-details{
+        margin-right: -50%;
+}
 /* Exemplo de CSS para garantir que a nova lógica funcione */
 .glass-container {
     /* As dimensões de width/height são definidas dinamicamente no JS */
     position: relative; 
-    margin: 15% ; 
+    justify-items: center;
+    margin: 5% 2% ; 
     /* Outros estilos como max-width, etc. */
     width: 55%; 
 }
@@ -125,5 +127,6 @@ main {
 /* Estilo para o lado esquerdo (os círculos) */
 .grid .item {
     border-radius: 50%;
+  
     /* Outros estilos de tamanho e layout */
 }
