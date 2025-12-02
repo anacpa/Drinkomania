@@ -103,7 +103,21 @@ main {
     height: 100%;
     display: block;
     position: relative; /* Para garantir que o fill fique por baixo/por trás */
-    z-index: 10;
+    z-index: 1;
+}
+
+.mask {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0; /* baixo para não interferir */
+    
+    /* Esconde visualmente o SVG */
+    display: block;
+    opacity: 0; /* garante que não apareça */
+    overflow: hidden; 
 }
 
 .drink-fill {
@@ -112,7 +126,7 @@ main {
     /* A altura e a posição 'top' (ou 'bottom') são definidas no JS */
     left: 0;
     /* bottom: 0; se fosse usado bottom */
-    z-index: 5; /* Fica abaixo da imagem do copo (ou usa background de um container) */
+    z-index: 2; /* Fica abaixo da imagem do copo (ou usa background de um container) */
 
     /* Garante que a máscara SVG funciona corretamente */
     mask-size: contain; 
@@ -130,3 +144,4 @@ main {
   
     /* Outros estilos de tamanho e layout */
 }
+

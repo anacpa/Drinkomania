@@ -14,7 +14,7 @@ const cupSelect = document.getElementById('cup');
 
 // Mapeamento dos tipos de copos (Glass type) para os arquivos genéricos (A a G)
 const glassTypeMap = [
-    { "item": "Cocktail glass", "glassType": "A", "style": "width: 60%; max-height: 80%;" }, // Exemplo: Copo A é mais estreito
+    { "item": "Cocktail glass", "glassType": "A", "style": "width: 40%; max-height: 80%;" }, // Exemplo: Copo A é mais estreito
     { "item": "Highball glass", "glassType": "B", "style": "width: 40%; max-height: 80%;" }, // Exemplo: Copo B
     { "item": "Collins glass", "glassType": "B", "style": "width: 40%; max-height: 80%;" },
     { "item": "Old-fashioned glass", "glassType": "D", "style": "width: 60%; max-height: 80%;" }, // Exemplo: Copo D é mais largo
@@ -37,6 +37,7 @@ const glassTypeMap = [
     { "item": "Mason jar", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
     { "item": "Pousse cafe glass", "glassType": "E", "style": "width: 40%; max-height: 100%;" }
 ];
+
 
 
 // =========================================================================
@@ -324,7 +325,47 @@ function drawDrinkFill(ingredientsData, fillHeight, topOffset = 0) {
     // NOTA: As linhas para maskImage foram removidas aqui
 }
 
-/**
+
+/* GLASS MASK  */  
+  function applyMask(glassCode) {
+    const maskContainer = document.querySelector(".mask");
+    const drinkFill = document.getElementById("drinkFill");
+    if (!drinkFill) return;
+
+    // Nome exato dos teus ficheiros: "mask A.svg", "mask B.svg"...
+    const maskFileName = `mask ${glassCode}.svg`;
+    const path = `images/masks/${maskFileName}`;
+    const encodedPath = encodeURI(path); // necessário por causa do espaço
+
+    if (maskContainer) maskContainer.innerHTML = "";
+
+    // Carrega o SVG e injeta na .mask
+    fetch(path)
+        .then(res => res.text())
+        .then(svg => {
+            if (maskContainer) maskContainer.innerHTML = svg;
+
+            // Aplica a máscara ao líquido
+            drinkFill.style.maskImage = `url('${encodedPath}')`;
+            drinkFill.style.webkitMaskImage = `url('${encodedPath}')`;
+
+            drinkFill.style.maskSize = "contain";
+            drinkFill.style.webkitMaskSize = "contain";
+
+            drinkFill.style.maskRepeat = "no-repeat";
+            drinkFill.style.webkitMaskRepeat = "no-repeat";
+
+            drinkFill.style.maskPosition = "center bottom";
+            drinkFill.style.webkitMaskPosition = "center bottom";
+        })
+        .catch(e => {
+            console.error("Erro carregando máscara:", maskFileName, e);
+        });
+}
+
+
+  
+ /* 
  * Atualiza o conteúdo da secção #right com os detalhes do cocktail,
  * incluindo a visualização gráfica no copo (sem máscaras SVG).
  */
@@ -397,6 +438,7 @@ const imageStyle = glassMapping.style;
             <h2>${cocktail.Drink}</h2>
             
             <div class="glass-container">
+             <div class="mask"></div>
                 <div class="drink-fill" id="drinkFill"></div>
                 <img src="${cupImageURL}" alt="${glassType}" class="glass-image" style="${imageStyle}">
             </div>
@@ -414,6 +456,8 @@ const imageStyle = glassMapping.style;
     `;
 
     // 7. Desenha o preenchimento, passando a altura
+    applyMask(glassCode);
     drawDrinkFill(ingredientsData, fillHeight, topOffset);
 
     }
+  
