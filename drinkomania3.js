@@ -1,5 +1,4 @@
-
-// DRINKOMANIA.JS - CÓDIGO COMPLETO
+// DRINKOMANIA.JS - CÓDIGO COMPLETO (Máscaras Removidas)
 // =========================================================================
 
 let allCocktails = [];
@@ -30,7 +29,7 @@ const glassTypeMap = [
     { "item": "Pilsner glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
     { "item": "Beer mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
     { "item": "Nick and Nora glass", "glassType": "E", "style": "width: 40%; max-height: 100%;" },
-    { "item": "Pint glass", "glassType": "B", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Pint glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
     { "item": "Pitcher", "glassType": "B", "style": "width: 60%; max-height: 100%;" },
     { "item": "Cordial glass", "glassType": "B", "style": "width: 60%; max-height: 100%;" },
     { "item": "Copper Mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
@@ -286,15 +285,13 @@ function applyFilters() {
 // =========================================================================
 
 /**
- * Desenha o preenchimento da bebida usando linear-gradient e aplica a máscara SVG.
- *//**
- * Desenha o preenchimento da bebida usando linear-gradient e aplica a máscara SVG.
+ * Desenha o preenchimento da bebida usando linear-gradient.
+ *
  * @param {Array} ingredientsData - Os dados das proporções do cocktail.
- * @param {string} maskImageURL - O URL da imagem de máscara (SVG).
  * @param {number} fillHeight - Altura de preenchimento (em % da altura total do recipiente).
  * @param {number} topOffset - Ajuste vertical adicional (em %) para a posição 'top'.
  */
-function drawDrinkFill(ingredientsData, maskImageURL, fillHeight, topOffset = 0) {
+function drawDrinkFill(ingredientsData, fillHeight, topOffset = 0) {
     const drinkFillElement = document.getElementById('drinkFill');
     if (!drinkFillElement || ingredientsData.length === 0) return;
 
@@ -305,17 +302,12 @@ function drawDrinkFill(ingredientsData, maskImageURL, fillHeight, topOffset = 0)
     // Posição base (o que sobra acima da bebida) = 100 - fillHeight
     const basePositionTop = 100 - fillHeight;
     
-    // Aplica o ajuste:
-    // Se fillHeight for 45, base é 55. Se topOffset for 5, o top final é 55 - 5 = 50.
-    // O seu exemplo (copo A: 50 - fillHeight) implica que o 'top' base desejado é 50%,
-    // e o ajuste é (50 - fillHeight) = 50 - 45 = 5%.
-    
-    // Novo cálculo final da posição 'top':
+    // Novo cálculo final da posição 'top' (mantendo a lógica de ajuste):
     const finalTopPosition = basePositionTop - topOffset;
     
     drinkFillElement.style.top = `${finalTopPosition}%`; 
     
-    // 2. Cria o gradiente (código inalterado)
+    // 2. Cria o gradiente
     let colorStops = [];
     const reversedIngredients = [...ingredientsData].reverse(); 
     let currentPercent = 0;
@@ -327,15 +319,14 @@ function drawDrinkFill(ingredientsData, maskImageURL, fillHeight, topOffset = 0)
         currentPercent = endFill; 
     });
     
-    // 3. Aplica o gradiente e a máscara (código inalterado)
+    // 3. Aplica o gradiente
     drinkFillElement.style.background = `linear-gradient(to top, ${colorStops.join(', ')})`;
-    drinkFillElement.style.maskImage = `url(${maskImageURL})`;
-    drinkFillElement.style.webkitMaskImage = `url(${maskImageURL})`;
+    // NOTA: As linhas para maskImage foram removidas aqui
 }
 
 /**
  * Atualiza o conteúdo da secção #right com os detalhes do cocktail,
- * incluindo a visualização gráfica no copo.
+ * incluindo a visualização gráfica no copo (sem máscaras SVG).
  */
 function updateRightSection(cocktail) {
     rightSection.innerHTML = ''; // Limpa o conteúdo
@@ -363,32 +354,31 @@ function updateRightSection(cocktail) {
 const glassCode = glassMapping.glassType; 
 const imageStyle = glassMapping.style; 
     
-    // 2. Determinar a altura de preenchimento (nova lógica)
-    // Se for A, E, ou G, a altura é 50%; caso contrário, 100%.
+    // 2. Determinar a altura de preenchimento e o ajuste vertical (mantendo a lógica original)
     let fillHeight;
-    let topOffset; // Novo ajuste a ser aplicado à posição 'top' base
+    let topOffset; 
     
     if (glassCode === 'A') { //cocktail glass
         fillHeight = 30;
         topOffset = 56;
-    } else if (glassCode === 'G') {  //margarita 
+    } else if (glassCode === 'G') {  //margarita 
         fillHeight = 25;
-        topOffset = 44; // E
-   
-    }else if (glassCode === 'E') {  //wine glass
+        topOffset = 44; 
+    
+    }else if (glassCode === 'E') {  //wine glass
         fillHeight = 50;
-        topOffset = 47; // E
+        topOffset = 47; 
 
-     }else if (glassCode === 'F') {  //shot glass
+      }else if (glassCode === 'F') {  //shot glass
         fillHeight = 85;
-        topOffset = 31; // F
-    } else  {
+        topOffset = 12; 
+    } else  {
         fillHeight = 95; // Restantes: B, C, D, 
         topOffset = 4;
-         }
-    // 3. Construir os URLs
+          }
+    // 3. Construir o URL do copo
     const cupImageURL = `images/copos/copo ${glassCode}.png`; 
-    const maskImageURL = `images/masks/mask ${glassCode}.svg`; 
+    // NOTA: maskImageURL foi removido
     
     // 4. Obter dados de proporção
     const ingredientsData = getCocktailProportions(cocktail);
@@ -401,6 +391,7 @@ const imageStyle = glassMapping.style;
     ingredientsList += '</ul>';
     
     // 6. Conteúdo detalhado (HTML)
+    // O elemento drink-fill permanece, mas agora deve ser estilizado via CSS para ocupar a área da bebida, sem depender da máscara SVG.
     rightSection.innerHTML = `
         <div class="cocktail-details">
             <h2>${cocktail.Drink}</h2>
@@ -423,6 +414,6 @@ const imageStyle = glassMapping.style;
     `;
 
     // 7. Desenha o preenchimento, passando a altura
-    drawDrinkFill(ingredientsData, maskImageURL, fillHeight, topOffset);
+    drawDrinkFill(ingredientsData, fillHeight, topOffset);
 
     }
