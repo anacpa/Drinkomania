@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 1%;
-    background-color: rgb(247, 247, 247);
+    background-color: rgb(230, 230, 230);
     font-family: Arial, sans-serif;
     overflow: hidden;
 }
@@ -85,41 +85,40 @@ main {
 /*      ESTILOS PARA A VISUALIZAÇÃO DO COPO NA SECÇÃO #right
    ========================================================================= */
 
-/* O contêiner pai que define o tamanho da visualização */
+
+/* Exemplo de CSS para garantir que a nova lógica funcione */
 .glass-container {
-    position: relative;
-    width: 250px; /* Ajuste para o tamanho visual desejado */
-    height: 350px; 
-    margin: 20px auto; 
+    /* As dimensões de width/height são definidas dinamicamente no JS */
+    position: relative; 
+    margin: 15% ; 
+    /* Outros estilos como max-width, etc. */
+    width: 55%; 
 }
 
-/* O elemento que será preenchido com o gradiente de cores */
-.drink-fill {
-    position: absolute;
-       top: 11%;
-    left: 0;
-    width: 100%; /* Ocupa 100% do .glass-container */
-    height: 100%; /* Ocupa 100% do .glass-container */
-    z-index: 1; /* Fica por baixo da imagem do copo */
-    
-    /* Configuração da máscara: Usa a imagem da máscara para definir a área de corte */
-    /* Isso garante que o preenchimento (o gradiente) seja cortado na forma da máscara */
-    mask-repeat: no-repeat;
-    mask-size: contain; /* Ajusta a máscara ao tamanho do elemento */
-    mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-size: contain;
-    -webkit-mask-position: center;
-}
-
-/* A imagem do copo (contorno) */
 .glass-image {
-    position: absolute;
-    top: 0;
-    left: 0;
+    /* A imagem do copo deve ocupar toda a área do container */
     width: 100%;
     height: 100%;
-    z-index: 2; /* Garante que o contorno fique visível por cima do preenchimento */
+    display: block;
+    position: relative; /* Para garantir que o fill fique por baixo/por trás */
+    z-index: 10;
+}
+
+.drink-fill {
+    position: absolute;
+    width: 100%; 
+    /* A altura e a posição 'top' (ou 'bottom') são definidas no JS */
+    left: 0;
+    /* bottom: 0; se fosse usado bottom */
+    z-index: 5; /* Fica abaixo da imagem do copo (ou usa background de um container) */
+
+    /* Garante que a máscara SVG funciona corretamente */
+    mask-size: contain; 
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
 }
 
 
