@@ -14,8 +14,8 @@ const solidIngredient = {
      "Cloves": "images/solidos/cloves.png",
      "Cocoa powder": "images/solidos/Cocoa powder.png",
      "Cucumber": "images/solidos/Cucumber.png",
-     "Egg white": "images/solidos/Egg white.png",
-     "Egg": "images/solidos/Egg.png",
+     "Egg white": "images/solidos/Egg white.png",  //ponderar 
+     "Egg": "images/solidos/Egg.png",   //ponderar
      "Figs": "images/solidos/Figs.png",
      "Ginger": "images/solidos/Ginger.png",
      "Honey": "images/solidos/Honey.png",
