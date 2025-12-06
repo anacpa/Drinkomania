@@ -55,13 +55,16 @@ function getGlassCode(glassTypeName) {
 }
 
 /**
- * Calcula as proporções, cores e medidas de cada ingrediente do cocktail.
- * Retorna um array de objetos com dados de percentagem para uso em gradients.
+ * Calcula as proporções, cores e medidas de cada ingrediente líquido do cocktail.
+ * Retorna um array de objetos com dados de percentagem (APENAS LÍQUIDOS) para o gradiente.
  */
 function getCocktailProportions(cocktail) {
     let ingredientsData = [];
     let measures = [];
     
+    // Lista de chaves do seu objeto solidIngredient, convertidas para minúsculas
+    const solidKeys = Object.keys(solidIngredient).map(key => key.toLowerCase());
+
     // 1. Coleta ingredientes e medidas (até 15)
     for (let i = 1; i <= 15; i++) {
         const ingredientKey = `Ingredient${i}`;
@@ -71,10 +74,19 @@ function getCocktailProportions(cocktail) {
         const measure = cocktail[measureKey];
         
         if (ingredient && ingredient.trim() !== "") {
+            const trimmedIngredient = ingredient.trim();
+
+            // *** EXCLUSÃO PARA PROPORÇÃO DO COPO ***
+            // Se o ingrediente for sólido, salta-o.
+            if (solidKeys.includes(trimmedIngredient.toLowerCase())) {
+                continue; 
+            }
+            // **************************************
+            
             ingredientsData.push({
-                ingredient: ingredient.trim(),
+                ingredient: trimmedIngredient,
                 // 'ingredientColors' deve estar definido no seu 'Cores.js'
-                color: typeof ingredientColors !== 'undefined' ? ingredientColors[ingredient.trim()] || '#cccccc' : '#cccccc', 
+                color: typeof ingredientColors !== 'undefined' ? ingredientColors[trimmedIngredient] || '#cccccc' : '#cccccc', 
                 measure: measure ? measure.trim() : "",
                 // 1 como default para proporção, se a medida não for um número
                 parsedMeasure: parseFloat(measure) || 1 
@@ -85,6 +97,7 @@ function getCocktailProportions(cocktail) {
 
     // 2. Calcula as proporções percentuais
     let totalMeasure = measures.reduce((a, b) => a + b, 0);
+    // Caso raro onde só existem sólidos ou ingredientes sem medida, assume partes iguais
     if (totalMeasure === 0 && measures.length > 0) totalMeasure = measures.length; 
 
     let currentPercent = 0;
@@ -98,7 +111,6 @@ function getCocktailProportions(cocktail) {
 
     return ingredientsData;
 }
-
 
 // =========================================================================
 // FUNÇÕES PRINCIPAIS DO P5.JS (PRELOAD, SETUP, DRAW)
@@ -233,21 +245,19 @@ function drawDrinkFill(ingredientsData, fillHeight, topOffset = 0) {
 
 
   
- /* 
- * Atualiza o conteúdo da secção #right com os detalhes do cocktail,
+ /* * Atualiza o conteúdo da secção #right com os detalhes do cocktail,
  * incluindo a visualização gráfica no copo (sem máscaras SVG).
  */
 function updateRightSection(cocktail) {
     rightSection.innerHTML = ''; // Limpa o conteúdo
     
    if (!cocktail) {
-
     
         // Exibe o texto inicial
         rightSection.innerHTML = `
             <h2>Cocktails</h2>
             <p>
-                Bem-vindo(a) ao **DRINKOMANIA**!
+                Bem-vindo/a ao **DRINKOMANIA**!
                 Use os filtros acima para encontrar a bebida perfeita.
                 Clique num círculo (item) à esquerda para ver os detalhes
                 de cada cocktail, incluindo ingredientes, proporções e instruções.
@@ -260,10 +270,10 @@ function updateRightSection(cocktail) {
     
     // 1. Obter a letra do copo (A, B, C, etc.)
     const glassMapping = getGlassCode(glassType); // Agora retorna o objeto
-const glassCode = glassMapping.glassType; 
-const imageStyle = glassMapping.style; 
+    const glassCode = glassMapping.glassType; 
+    const imageStyle = glassMapping.style; 
     
-    // 2. Determinar a altura de preenchimento e o ajuste vertical (mantendo a lógica original)
+    // 2. Determinar a altura de preenchimento e o ajuste vertical 
     let fillHeight;
     let topOffset; 
     
@@ -278,7 +288,7 @@ const imageStyle = glassMapping.style;
         fillHeight = 50;
         topOffset = 47; 
 
-      }else if (glassCode === 'F') {  //shot glass
+    }else if (glassCode === 'F') {  //shot glass
         fillHeight = 85;
         topOffset = 12; 
     } else  {
@@ -287,20 +297,28 @@ const imageStyle = glassMapping.style;
           }
     // 3. Construir o URL do copo
     const cupImageURL = `images/copos/copo ${glassCode}.png`; 
-    // NOTA: maskImageURL foi removido
     
-    // 4. Obter dados de proporção
+    // 4. Obter dados de proporção (ISTO CONTÉM APENAS OS LÍQUIDOS FILTRADOS)
     const ingredientsData = getCocktailProportions(cocktail);
     
-    // 5. Cria a lista de ingredientes e proporções com marcadores coloridos
+    // 5. CRIA A LISTA DE INGREDIENTES E MEDIDAS (TODOS: líquidos E sólidos)
+    // ITERA SOBRE O OBJECTO ORIGINAL DO COCKTAIL (SEM FILTRO)
     let ingredientsList = '<ul>';
-    ingredientsData.forEach(item => {
-        ingredientsList += `<li><span style="color:${item.color}; font-size: 1.2em;">■</span> **${item.ingredient}**: ${item.measure ? item.measure : 'To taste'}</li>`;
-    });
+    for (let i = 1; i <= 15; i++) {
+        const ingredient = cocktail[`Ingredient${i}`];
+        const measure = cocktail[`Measure${i}`];
+        
+        if (ingredient && ingredient.trim() !== "") {
+            const trimmedIngredient = ingredient.trim();
+            // Assume que 'ingredientColors' está acessível e mapeia a cor
+            const color = typeof ingredientColors !== 'undefined' ? ingredientColors[trimmedIngredient] || '#cccccc' : '#cccccc'; 
+            
+            ingredientsList += `<li><span style="color:${color}; font-size: 1.2em;">■</span> **${trimmedIngredient}**: ${measure ? measure.trim() : 'To taste'}</li>`;
+        }
+    }
     ingredientsList += '</ul>';
     
     // 6. Conteúdo detalhado (HTML)
-    // O elemento drink-fill permanece, mas agora deve ser estilizado via CSS para ocupar a área da bebida, sem depender da máscara SVG.
     rightSection.innerHTML = `
         <div class="cocktail-details">
             <h2>${cocktail.Drink}</h2>
@@ -323,9 +341,8 @@ const imageStyle = glassMapping.style;
         </div>
     `;
 
-    // 7. Desenha o preenchimento, passando a altura
+    // 7. Desenha o preenchimento (APENAS COM INGREDIENTES LÍQUIDOS)
     applyMask(glassCode);
     drawDrinkFill(ingredientsData, fillHeight, topOffset);
 
     }
-  
