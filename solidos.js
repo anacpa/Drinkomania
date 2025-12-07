@@ -25,6 +25,7 @@ const solidIngredient = {
      "Lemon": "images/solidos/Lemon.png",
      "Lime peel": "images/solidos/Lime peel.png",
      "Lime": "images/solidos/Lime.png",
+     "Marachino cherry" : "images/solidos/Cherry.png",
      "Mint": "images/solidos/Mint.png",
      "Nutmeg": "images/solidos/Nutmeg.png",
      "Olive": "images/solidos/Olive.png",
