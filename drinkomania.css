@@ -28,6 +28,13 @@ header {
    
 }
 
+.graficos{
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: wrap;
+    margin: 2%;
+}
+
 /* ------------------ LAYOUT MAIN ------------------ */
 
 main {
