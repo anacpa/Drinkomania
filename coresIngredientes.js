@@ -172,7 +172,7 @@ const ingredientColors = {
   "Oreo cookie": "#494A4C",
   "Orgeat Syrup": "#4F221E",
   "Ouzo": "#3963C8",
-  "Papaya": "#FF7C6C",
+  "Papaya juice": "#FF7C6C",
   "Passion fruit juice": "#FFCD6E",
   "Passion fruit syrup": "#FFD799",
   "Passoa": "#008397",
