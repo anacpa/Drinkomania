@@ -49,7 +49,7 @@ const glassTypeMap = [
  * Retorna o código (letra) do copo com base no seu nome.
  */
 function getGlassCode(glassTypeName) {
-   const defaultMapping = { "glassType": "B", "style": "width: 40%; max-height: 100%;" };
+    const defaultMapping = { "glassType": "B", "style": "width: 40%; max-height: 100%;" };
     const mapping = glassTypeMap.find(item => item.item.toLowerCase() === glassTypeName.toLowerCase());
     return mapping ? mapping : defaultMapping; // Retorna o objeto completo
 }
@@ -61,7 +61,7 @@ function getGlassCode(glassTypeName) {
 function getCocktailProportions(cocktail) {
     let ingredientsData = [];
     let measures = [];
-    
+
     // Lista de chaves do seu objeto solidIngredient, convertidas para minúsculas
     const solidKeys = Object.keys(solidIngredient).map(key => key.toLowerCase());
 
@@ -69,27 +69,27 @@ function getCocktailProportions(cocktail) {
     for (let i = 1; i <= 15; i++) {
         const ingredientKey = `Ingredient${i}`;
         const measureKey = `Measure${i}`;
-        
+
         const ingredient = cocktail[ingredientKey];
         const measure = cocktail[measureKey];
-        
+
         if (ingredient && ingredient.trim() !== "") {
             const trimmedIngredient = ingredient.trim();
 
             // *** EXCLUSÃO PARA PROPORÇÃO DO COPO ***
             // Se o ingrediente for sólido, salta-o.
             if (solidKeys.includes(trimmedIngredient.toLowerCase())) {
-                continue; 
+                continue;
             }
             // **************************************
-            
+
             ingredientsData.push({
                 ingredient: trimmedIngredient,
                 // 'ingredientColors' deve estar definido no seu 'Cores.js'
-                color: typeof ingredientColors !== 'undefined' ? ingredientColors[trimmedIngredient] || '#cccccc' : '#cccccc', 
+                color: typeof ingredientColors !== 'undefined' ? ingredientColors[trimmedIngredient] || '#cccccc' : '#cccccc',
                 measure: measure ? measure.trim() : "",
                 // 1 como default para proporção, se a medida não for um número
-                parsedMeasure: parseFloat(measure) || 1 
+                parsedMeasure: parseFloat(measure) || 1
             });
             measures.push(ingredientsData[ingredientsData.length - 1].parsedMeasure);
         }
@@ -98,7 +98,7 @@ function getCocktailProportions(cocktail) {
     // 2. Calcula as proporções percentuais
     let totalMeasure = measures.reduce((a, b) => a + b, 0);
     // Caso raro onde só existem sólidos ou ingredientes sem medida, assume partes iguais
-    if (totalMeasure === 0 && measures.length > 0) totalMeasure = measures.length; 
+    if (totalMeasure === 0 && measures.length > 0) totalMeasure = measures.length;
 
     let currentPercent = 0;
     ingredientsData.forEach(item => {
@@ -121,9 +121,9 @@ function getCocktailProportions(cocktail) {
  */
 function preload() {
     // use p5.js loadJSON with callback to ensure array
-    
+
     allCocktails = loadJSON('drinks.json', (data) => {
-      allCocktails = Array.isArray(data) ? data : Object.values(data);
+        allCocktails = Array.isArray(data) ? data : Object.values(data);
     });
 }
 
@@ -178,36 +178,36 @@ function drawDrinkFill(ingredientsData, fillHeight, topOffset = 0) {
 
     // 1. Aplica a altura de preenchimento
     drinkFillElement.style.height = `${fillHeight}%`;
-    
+
     // Cálculo da posição 'top':
     // Posição base (o que sobra acima da bebida) = 100 - fillHeight
     const basePositionTop = 100 - fillHeight;
-    
+
     // Novo cálculo final da posição 'top' (mantendo a lógica de ajuste):
     const finalTopPosition = basePositionTop - topOffset;
-    
-    drinkFillElement.style.top = `${finalTopPosition}%`; 
-    
+
+    drinkFillElement.style.top = `${finalTopPosition}%`;
+
     // 2. Cria o gradiente
     let colorStops = [];
-    const reversedIngredients = [...ingredientsData].reverse(); 
+    const reversedIngredients = [...ingredientsData].reverse();
     let currentPercent = 0;
 
     reversedIngredients.forEach(item => {
         let startFill = currentPercent;
         let endFill = currentPercent + item.percent;
         colorStops.push(`${item.color} ${startFill}% ${endFill}%`);
-        currentPercent = endFill; 
+        currentPercent = endFill;
     });
-    
+
     // 3. Aplica o gradiente
     drinkFillElement.style.background = `linear-gradient(to top, ${colorStops.join(', ')})`;
     // NOTA: As linhas para maskImage foram removidas aqui
 }
 
 
-/* GLASS MASK  */  
-  function applyMask(glassCode) {
+/* GLASS MASK  */
+function applyMask(glassCode) {
     const maskContainer = document.querySelector(".mask");
     const drinkFill = document.getElementById("drinkFill");
     if (!drinkFill) return;
@@ -244,15 +244,15 @@ function drawDrinkFill(ingredientsData, fillHeight, topOffset = 0) {
 }
 
 
-  
- /* * Atualiza o conteúdo da secção #right com os detalhes do cocktail,
- * incluindo a visualização gráfica no copo (sem máscaras SVG).
- */
+
+/* * Atualiza o conteúdo da secção #right com os detalhes do cocktail,
+* incluindo a visualização gráfica no copo (sem máscaras SVG).
+*/
 function updateRightSection(cocktail) {
     rightSection.innerHTML = ''; // Limpa o conteúdo
-    
-   if (!cocktail) {
-    
+
+    if (!cocktail) {
+
         // Exibe o texto inicial
         rightSection.innerHTML = `
             <h2>Cocktails</h2>
@@ -267,57 +267,57 @@ function updateRightSection(cocktail) {
     }
 
     const glassType = cocktail['Glass type'] || 'Unknown Glass';
-    
+
     // 1. Obter a letra do copo (A, B, C, etc.)
     const glassMapping = getGlassCode(glassType); // Agora retorna o objeto
-    const glassCode = glassMapping.glassType; 
-    const imageStyle = glassMapping.style; 
-    
+    const glassCode = glassMapping.glassType;
+    const imageStyle = glassMapping.style;
+
     // 2. Determinar a altura de preenchimento e o ajuste vertical 
     let fillHeight;
-    let topOffset; 
-    
+    let topOffset;
+
     if (glassCode === 'A') { //cocktail glass
         fillHeight = 30;
         topOffset = 56;
     } else if (glassCode === 'G') {  //margarita 
         fillHeight = 25;
-        topOffset = 44; 
-    
-    }else if (glassCode === 'E') {  //wine glass
-        fillHeight = 50;
-        topOffset = 47; 
+        topOffset = 44;
 
-    }else if (glassCode === 'F') {  //shot glass
+    } else if (glassCode === 'E') {  //wine glass
+        fillHeight = 50;
+        topOffset = 47;
+
+    } else if (glassCode === 'F') {  //shot glass
         fillHeight = 85;
-        topOffset = 12; 
-    } else  {
+        topOffset = 12;
+    } else {
         fillHeight = 95; // Restantes: B, C, D, 
         topOffset = 4;
-          }
+    }
     // 3. Construir o URL do copo
-    const cupImageURL = `images/copos/copo ${glassCode}.png`; 
-    
+    const cupImageURL = `images/copos/copo ${glassCode}.png`;
+
     // 4. Obter dados de proporção (ISTO CONTÉM APENAS OS LÍQUIDOS FILTRADOS)
     const ingredientsData = getCocktailProportions(cocktail);
-    
+
     // 5. CRIA A LISTA DE INGREDIENTES E MEDIDAS (TODOS: líquidos E sólidos)
     // ITERA SOBRE O OBJECTO ORIGINAL DO COCKTAIL (SEM FILTRO)
     let ingredientsList = '<ul>';
     for (let i = 1; i <= 15; i++) {
         const ingredient = cocktail[`Ingredient${i}`];
         const measure = cocktail[`Measure${i}`];
-        
+
         if (ingredient && ingredient.trim() !== "") {
             const trimmedIngredient = ingredient.trim();
             // Assume que 'ingredientColors' está acessível e mapeia a cor
-            const color = typeof ingredientColors !== 'undefined' ? ingredientColors[trimmedIngredient] || '#cccccc' : '#cccccc'; 
-            
+            const color = typeof ingredientColors !== 'undefined' ? ingredientColors[trimmedIngredient] || '#cccccc' : '#cccccc';
+
             ingredientsList += `<li><span style="color:${color}; font-size: 1.2em;">■</span> **${trimmedIngredient}**: ${measure ? measure.trim() : 'To taste'}</li>`;
         }
     }
     ingredientsList += '</ul>';
-    
+
     // 6. Conteúdo detalhado (HTML)
     rightSection.innerHTML = `
         <div class="cocktail-details">
@@ -345,4 +345,92 @@ function updateRightSection(cocktail) {
     applyMask(glassCode);
     drawDrinkFill(ingredientsData, fillHeight, topOffset);
 
+    // 8. Adicionar os sólidos
+    placeSolidGarnishes(cocktail, glassCode); // Passa o código do copo para definir os limites
+
+
+}
+
+
+/**
+ * Coloca os ingredientes sólidos (guarnições) aleatoriamente dentro do .glass-container,
+ * respeitando os limites aproximados da máscara do copo.
+ * @param {object} cocktail - O objeto cocktail com os ingredientes
+ * @param {string} glassCode - O código do copo (A, B, C, etc.)
+ */
+function placeSolidGarnishes(cocktail, glassCode) {
+    if (typeof solidIngredient === 'undefined') return;
+    
+    const glassContainer = document.querySelector('.glass-container');
+    if (!glassContainer) return;
+
+    const solidKeys = Object.keys(solidIngredient).map(key => key.toLowerCase());
+
+    // 1. Definir os limites de posicionamento (em %) com base no código do copo
+    let xMin = 15, xMax = 85; // Default horizontal
+    let yMin = 10, yMax = 90; // Default vertical (Topo do container)
+    let size = 15; // Tamanho da imagem do sólido em %
+
+    // Ajustes específicos para formatos não cilíndricos (onde a máscara é mais restrita)
+    if (glassCode === 'A') { // Cocktail glass (como o do Casino - V-shape, líquido alto)
+        xMin = 30; xMax = 70; // Mais estreito
+        yMin = 15; yMax = 40; // Mais alto
+        size = 18;
+    } else if (glassCode === 'G') { // Margarita glass (copo em camadas, líquido no topo)
+        xMin = 20; xMax = 80;
+        yMin = 15; yMax = 50; 
+        size = 18;
+    } else if (glassCode === 'E') { // Taças de vinho/Champagne (pés longos)
+        xMin = 30; xMax = 70;
+        yMin = 35; yMax = 80; 
+        size = 15;
+    } else if (glassCode === 'F') { // Shot glass (cheio quase até ao topo)
+        xMin = 25; xMax = 75;
+        yMin = 5; yMax = 90; 
+        size = 12;
+    } 
+    // B, C, D (Highball, Old-fashioned, Mug) usam o default ou valores próximos.
+
+    for (let i = 1; i <= 15; i++) {
+        const ingredient = cocktail[`Ingredient${i}`];
+        
+        if (ingredient && ingredient.trim() !== "") {
+            const trimmedIngredient = ingredient.trim();
+            const lowerCaseIngredient = trimmedIngredient.toLowerCase();
+
+            if (solidKeys.includes(lowerCaseIngredient)) {
+                
+                const originalKey = Object.keys(solidIngredient).find(key => key.toLowerCase() === lowerCaseIngredient);
+                if (!originalKey) continue;
+                
+                const imagePath = solidIngredient[originalKey];
+                
+                const garnishImg = document.createElement('img');
+                garnishImg.src = imagePath;
+                garnishImg.className = 'solid-garnish'; 
+
+                // 2. Cálculo aleatório dentro dos novos limites:
+                // Usamos (Máx - Mín - (Tamanho / 2)) para garantir que a imagem não saia do limite direito/inferior
+                
+                // Posição horizontal (Left)
+                const rangeX = xMax - xMin - (size / 2); 
+                const randomLeft = Math.random() * rangeX + xMin; 
+                
+                // Posição vertical (Top)
+                const rangeY = yMax - yMin - (size / 2);
+                const randomTop = Math.random() * rangeY + yMin; 
+                
+                garnishImg.style.position = 'absolute';
+                garnishImg.style.left = `${randomLeft}%`;
+                garnishImg.style.top = `${randomTop}%`;
+                
+                garnishImg.style.width = `${size}%`; 
+                garnishImg.style.height = 'auto';
+                garnishImg.style.zIndex = 10; 
+                garnishImg.style.pointerEvents = 'none';
+                
+                glassContainer.appendChild(garnishImg);
+            }
+        }
     }
+}
