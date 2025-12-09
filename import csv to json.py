@@ -8,7 +8,7 @@ def converter_dataset_csv():
     Converte o ficheiro 'dataset.csv' para JSON e exporta
     """
     
-    csv_filename = "DataSet - DataSet.csv"
+    csv_filename = "DataSet.csv"
     json_filename = "drinks.json"
     
     # Verificar se o ficheiro existe
