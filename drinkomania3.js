@@ -366,6 +366,7 @@ function placeSolidGarnishes(cocktail, glassCode) {
 
     const solidKeys = Object.keys(solidIngredient).map(key => key.toLowerCase());
 
+    
     // 1. Definir os limites de posicionamento (em %) com base no código do copo
     let xMin = 15, xMax = 85; // Default horizontal
     let yMin = 10, yMax = 90; // Default vertical (Topo do container)
@@ -373,23 +374,31 @@ function placeSolidGarnishes(cocktail, glassCode) {
 
     // Ajustes específicos para formatos não cilíndricos (onde a máscara é mais restrita)
     if (glassCode === 'A') { // Cocktail glass (como o do Casino - V-shape, líquido alto)
-        xMin = 30; xMax = 70; // Mais estreito
-        yMin = 15; yMax = 40; // Mais alto
-        size = 18;
+        xMin = 45; xMax = 50; // Mais estreito
+        yMin = 10; yMax = 30; // Mais alto
+        size = 10;
     } else if (glassCode === 'G') { // Margarita glass (copo em camadas, líquido no topo)
-        xMin = 20; xMax = 80;
-        yMin = 15; yMax = 50; 
+        xMin = 28; xMax = 65;
+        yMin = 25; yMax = 50; 
         size = 18;
     } else if (glassCode === 'E') { // Taças de vinho/Champagne (pés longos)
-        xMin = 30; xMax = 70;
-        yMin = 35; yMax = 80; 
+        xMin = 30; xMax = 60;
+        yMin = 5; yMax = 40; 
         size = 15;
     } else if (glassCode === 'F') { // Shot glass (cheio quase até ao topo)
-        xMin = 25; xMax = 75;
-        yMin = 5; yMax = 90; 
+        xMin = 35; xMax = 60;
+        yMin = 5; yMax = 70; 
         size = 12;
-    } 
-    // B, C, D (Highball, Old-fashioned, Mug) usam o default ou valores próximos.
+    } else if (glassCode === 'B') { // highball, collins, pint (cilíndricos)
+        xMin = 30; xMax = 60;
+        yMin = 10; yMax = 75; 
+        size = 15;
+    } else if (glassCode === 'C') { // old-fashioned, mug (mais largos)
+        xMin = 0; xMax = 0;
+        yMin = 10; yMax = 50; 
+        size = 18;
+    }
+    // C, D (Old-fashioned, Mug) usam o default ou valores próximos.
 
     for (let i = 1; i <= 15; i++) {
         const ingredient = cocktail[`Ingredient${i}`];
