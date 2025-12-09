@@ -30,7 +30,7 @@ const glassTypeMap = [
     { "item": "Beer mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
     { "item": "Nick and Nora glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
     { "item": "Pint glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
-    { "item": "Pitcher", "glassType": "B", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Pitcher", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
     { "item": "Cordial glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
     { "item": "Copper Mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
     { "item": "Jar", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
@@ -313,7 +313,7 @@ function updateRightSection(cocktail) {
             // Assume que 'ingredientColors' está acessível e mapeia a cor
             const color = typeof ingredientColors !== 'undefined' ? ingredientColors[trimmedIngredient] || '#cccccc' : '#cccccc';
 
-            ingredientsList += `<li><span style="color:${color}; font-size: 1.2em;">■</span> **${trimmedIngredient}**: ${measure ? measure.trim() : 'To taste'}</li>`;
+            ingredientsList += `<li><span style="color:${color}; font-size: 1.2em;">■</span> ${trimmedIngredient}: ${measure ? measure.trim() : 'To taste'}</li>`;
         }
     }
     ingredientsList += '</ul>';
