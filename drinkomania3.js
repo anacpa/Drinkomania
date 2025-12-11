@@ -179,31 +179,29 @@ function drawDrinkFill(ingredientsData, fillHeight, topOffset = 0) {
     // 1. Aplica a altura de preenchimento
     drinkFillElement.style.height = `${fillHeight}%`;
 
-    // Cálculo da posição 'top':
-    // Posição base (o que sobra acima da bebida) = 100 - fillHeight
+    // 2. Cálculo da posição 'top':
     const basePositionTop = 100 - fillHeight;
-
-    // Novo cálculo final da posição 'top' (mantendo a lógica de ajuste):
     const finalTopPosition = basePositionTop - topOffset;
-
     drinkFillElement.style.top = `${finalTopPosition}%`;
 
-    // 2. Cria o gradiente
-    let colorStops = [];
-    const reversedIngredients = [...ingredientsData].reverse();
-    let currentPercent = 0;
+    // 3. Ordena ingredientes do MAIOR para o MENOR (para que o menor fique no topo)
+    const sortedIngredients = [...ingredientsData].sort((a, b) => b.parsedMeasure - a.parsedMeasure);
 
-    reversedIngredients.forEach(item => {
-        let startFill = currentPercent;
-        let endFill = currentPercent + item.percent;
+    // 4. Cria o gradiente
+    let colorStops = [];
+    let currentPercent = 0;
+    sortedIngredients.forEach(item => {
+        const startFill = currentPercent;
+        const endFill = currentPercent + item.percent;
         colorStops.push(`${item.color} ${startFill}% ${endFill}%`);
         currentPercent = endFill;
     });
 
-    // 3. Aplica o gradiente
+    // 5. Aplica o gradiente
     drinkFillElement.style.background = `linear-gradient(to top, ${colorStops.join(', ')})`;
-    // NOTA: As linhas para maskImage foram removidas aqui
 }
+
+
 
 
 /* GLASS MASK  */
