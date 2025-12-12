@@ -255,7 +255,7 @@ function updateRightSection(cocktail) {
         rightSection.innerHTML = `
             <h2>Cocktails</h2>
             <p>
-                Bem-vindo/a ao **DRINKOMANIA**!
+                Bem-vindo/a ao DRINKOMANIA!
                 Use os filtros acima para encontrar a bebida perfeita.
                 Clique num círculo (item) à esquerda para ver os detalhes
                 de cada cocktail, incluindo ingredientes, proporções e instruções.
