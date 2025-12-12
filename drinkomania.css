@@ -32,7 +32,11 @@ header {
     display: flex;
     justify-content: space-evenly;
     flex-flow: wrap;
-    margin: 2%;
+    margin: 1%;
+    > iframe{
+      padding: .3%;
+height: 51%;  
+    }
 }
 
 /* ------------------ LAYOUT MAIN ------------------ */
@@ -153,3 +157,20 @@ main {
     /* Outros estilos de tamanho e layout */
 }
 
+.instructions{
+    width: 70%;
+   scrollbar-width: none;        /* Firefox */
+-ms-overflow-style: none;     /* IE/Edge */
+overflow-x: hidden;           /* Bloqueia scroll horizontal */
+overflow-y: auto;             /* Permite scroll vertical (sem barra visível) */
+
+}
+
+
+/*como tornar só a direita
+#right >  */
+::-webkit-scrollbar {
+    display: none;  /* Esconde completamente a scrollbar */
+    width: 0;      /* Define largura zero */
+    height: 0;     /* Define altura zero */
+} 

@@ -1,4 +1,4 @@
-// DRINKOMANIA.JS - CÓDIGO COMPLETO (Máscaras Removidas)
+// DRINKOMANIA.JS 
 // =========================================================================
 
 let allCocktails = [];
@@ -15,26 +15,26 @@ const cupSelect = document.getElementById('cup');
 // Mapeamento dos tipos de copos (Glass type) para os arquivos genéricos (A a G)
 const glassTypeMap = [
     { "item": "Cocktail glass", "glassType": "A", "style": "width: 40%; max-height: 90%;" }, // Exemplo: Copo A é mais estreito
-    { "item": "Highball glass", "glassType": "B", "style": "width: 40%; max-height: 90%;" }, // Exemplo: Copo B
+    { "item": "Highball glass", "glassType": "B", "style": "width: 40%; max-height: 90%;" }, // 
     { "item": "Collins glass", "glassType": "B", "style": "width: 40%; max-height: 90%;" },
     { "item": "Old-fashioned glass", "glassType": "D", "style": "width: 60%; max-height: 90%;" }, // Exemplo: Copo D é mais largo
     { "item": "Shot glass", "glassType": "F", "style": "width: 30%; max-height: 100%;" },
-    { "item": "Coffee mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Coffee mug", "glassType": "C", "style": "width: 55%; max-height: 80%;" },
     { "item": "Champagne flute", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
     { "item": "Balloon glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
     { "item": "Hurricane glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
-    { "item": "Irish coffee cup", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Irish coffee cup", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
     { "item": "Margarita glass", "glassType": "G", "style": "width: 50%; max-height: 80%;" },
     { "item": "Wine glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
     { "item": "Pilsner glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
-    { "item": "Beer mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Beer mug", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
     { "item": "Nick and Nora glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
     { "item": "Pint glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
     { "item": "Pitcher", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
     { "item": "Cordial glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
-    { "item": "Copper Mug", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
-    { "item": "Jar", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
-    { "item": "Mason jar", "glassType": "C", "style": "width: 60%; max-height: 100%;" },
+    { "item": "Copper Mug", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
+    { "item": "Jar", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
+    { "item": "Mason jar", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
     { "item": "Pousse cafe glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" }
 ];
 
@@ -128,11 +128,8 @@ function preload() {
 }
 
 
-/**
- * Configuração inicial do p5.
- */
 function setup() {
-    noCanvas(); // Esconder o canvas do p5
+    noCanvas(); 
 
     filteredCocktails = allCocktails;
 
@@ -154,10 +151,6 @@ function setup() {
     updateRightSection(null);
 }
 
-
-function draw() {
-    // Vazio, pois o trabalho é baseado em eventos DOM
-}
 
 
 
@@ -222,6 +215,12 @@ function applyMask(glassCode) {
         .then(res => res.text())
         .then(svg => {
             if (maskContainer) maskContainer.innerHTML = svg;
+ if (glassCode === 'C') {
+            const glassImage = glassContainer.querySelector('.glass-image');
+ glassImage.style.transform = 'right('-22%')';
+       
+
+ }
 
             // Aplica a máscara ao líquido
             drinkFill.style.maskImage = `url('${encodedPath}')`;
@@ -235,6 +234,8 @@ function applyMask(glassCode) {
 
             drinkFill.style.maskPosition = "center bottom";
             drinkFill.style.webkitMaskPosition = "center bottom";
+
+            
         })
         .catch(e => {
             console.error("Erro carregando máscara:", maskFileName, e);
@@ -259,6 +260,9 @@ function updateRightSection(cocktail) {
                 Use os filtros acima para encontrar a bebida perfeita.
                 Clique num círculo (item) à esquerda para ver os detalhes
                 de cada cocktail, incluindo ingredientes, proporções e instruções.
+            </p>
+            <p>
+            Este projeto foi desenvolvido por Ana Almeida e Inês Costa no âmbito da unidade curricular de Visualização de Informação na Faculdade de Ciências e Tecnologias da Universidade de Coimbra.
             </p>
         `;
         return;
@@ -289,8 +293,11 @@ function updateRightSection(cocktail) {
     } else if (glassCode === 'F') {  //shot glass
         fillHeight = 85;
         topOffset = 12;
+    } else if (glassCode === 'C') {  // mug 
+        fillHeight = 88;
+        topOffset = 12;
     } else {
-        fillHeight = 95; // Restantes: B, C, D, 
+        fillHeight = 95; // Restantes: B, D, 
         topOffset = 4;
     }
     // 3. Construir o URL do copo
@@ -334,8 +341,10 @@ function updateRightSection(cocktail) {
             <h3>Ingredients & Measures</h3>
             ${ingredientsList}
             
+            <div class ="instructions"> 
             <h3>Instructions</h3>
             <p>${cocktail.Inuctions || 'No instructions provided.'}</p>
+            </div> 
         </div>
     `;
 
@@ -343,10 +352,22 @@ function updateRightSection(cocktail) {
     applyMask(glassCode);
     drawDrinkFill(ingredientsData, fillHeight, topOffset);
 
-    // 8. Adicionar os sólidos
-    placeSolidGarnishes(cocktail, glassCode); // Passa o código do copo para definir os limites
+    // 8. AJUSTE ESPECÍFICO PARA O COPO TIPO C
+    if (glassCode === 'C') {
+        const drinkFill = document.getElementById('drinkFill');
+        if (drinkFill) {
+            // Sobrescreve os estilos apenas para o copo tipo C
+            drinkFill.style.width = '33%';
+            drinkFill.style.left = '28.5%';
+            drinkFill.style.height = '92%';
+            drinkFill.style.top = '1%';
+            
+       
+        }
+    }
 
-
+    // 9. Adicionar os sólidos
+    placeSolidGarnishes(cocktail, glassCode);
 }
 
 
