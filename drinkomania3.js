@@ -422,11 +422,10 @@ function placeSolidGarnishes(cocktail, glassCode) {
         yMin = 5; yMax = 70; 
         size = 20;
     } else if (glassCode === 'C') { // mug, jar, beer mug (largos)
-        xMin = 20; xMax = 75;
+        xMin = 27; xMax = 55;
         yMin = 5; yMax = 75; 
         size = 18;
-    }
-    // C, D (Old-fashioned, Mug) usam o default ou valores próximos.
+    } 
 
     for (let i = 1; i <= 15; i++) {
         const ingredient = cocktail[`Ingredient${i}`];
