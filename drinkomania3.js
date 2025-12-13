@@ -399,7 +399,7 @@ function placeSolidGarnishes(cocktail, glassCode) {
     // Ajustes específicos para formatos não cilíndricos (onde a máscara é mais restrita)
     if (glassCode === 'A') { // Cocktail glass (como o do Casino - V-shape, líquido alto)
         xMin = 45; xMax = 50; // Mais estreito
-        yMin = 10; yMax = 30; // Mais alto
+        yMin = 10; yMax = 25; // Mais alto
         size = 10;
     } else if (glassCode === 'G') { // Margarita glass (copo em camadas, líquido no topo)
         xMin = 28; xMax = 65;
