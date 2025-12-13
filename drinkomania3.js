@@ -371,8 +371,13 @@ function updateRightSection(cocktail) {
 }
 
 
+// =========================================================================
+// INGREDIENTES SOLIDOS 
+// =========================================================================
+
+
 /**
- * Coloca os ingredientes sólidos (guarnições) aleatoriamente dentro do .glass-container,
+ * coloca os ingredientes sólidos (guarnições) aleatoriamente dentro do .glass-container,
  * respeitando os limites aproximados da máscara do copo.
  * @param {object} cocktail - O objeto cocktail com os ingredientes
  * @param {string} glassCode - O código do copo (A, B, C, etc.)
@@ -412,9 +417,13 @@ function placeSolidGarnishes(cocktail, glassCode) {
         xMin = 30; xMax = 60;
         yMin = 10; yMax = 75; 
         size = 15;
-    } else if (glassCode === 'C') { // old-fashioned, mug (mais largos)
-        xMin = 0; xMax = 0;
-        yMin = 10; yMax = 50; 
+    } else if (glassCode === 'D') { // old-fashioned
+        xMin = 25; xMax = 70;
+        yMin = 5; yMax = 70; 
+        size = 20;
+    } else if (glassCode === 'C') { // mug, jar, beer mug (largos)
+        xMin = 20; xMax = 75;
+        yMin = 5; yMax = 75; 
         size = 18;
     }
     // C, D (Old-fashioned, Mug) usam o default ou valores próximos.
