@@ -4,7 +4,8 @@ body {
     margin: 0;
     padding: 1%;
     background-color: rgb(230, 230, 230);
-    font-family: Arial, sans-serif;
+    font-family: Geologica, sans-serif;
+    font-weight: 300;
     overflow: hidden;
 }
 
@@ -13,6 +14,7 @@ header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    padding-bottom: 1%;
 }
 
 .logo {
@@ -93,6 +95,20 @@ main {
     max-width: 90%;
 }
 
+#right p:last-child{
+    font-size: 0.8rem;
+}
+
+#right span {
+   /* font-weight: bold; */
+   /* color: #ff178f; */
+   text-decoration: underline;
+}
+
+#right span:last-child{
+   font-style: italic;
+   text-decoration: none;
+}
 
 /*      ESTILOS PARA A VISUALIZAÇÃO DO COPO NA SECÇÃO #right
    ========================================================================= */

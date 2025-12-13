@@ -256,12 +256,17 @@ function updateRightSection(cocktail) {
         rightSection.innerHTML = `
             <h2>Cocktails</h2>
             <p>
-                Bem-vindo/a ao DRINKOMANIA!
-                Use os filtros acima para encontrar a bebida perfeita.
-                Clique num círculo (item) à esquerda para ver os detalhes
-                de cada cocktail, incluindo ingredientes, proporções e instruções.
-            </p>
+                Bem-vindo/a ao <span>DRINKOMANIA!</span> 
+                <br>
+                <br>
+               Desde que o termo <span>"cocktail"</span> apareceu em 1806, a sua história tem passado por diversos 
+               períodos e estilos diferentes, evoluindo das fórmulas simples do século XIX 
+               até chegar às criações complexas e artísticas dos dias de hoje. </p>
             <p>
+               Explora mais de 400 cocktails a partir dos filtros acima. Podes clicar também nos círculos à esquerda 
+               para ver os detalhes de cada cocktail, incluindo ingredientes, proporções e instruções.
+            </p>
+            <p> <br><br>
             Este projeto foi desenvolvido por Ana Almeida e Inês Costa no âmbito da unidade curricular de Visualização de Informação na Faculdade de Ciências e Tecnologias da Universidade de Coimbra.
             </p>
         `;
@@ -391,12 +396,7 @@ function placeSolidGarnishes(cocktail, glassCode) {
     const solidKeys = Object.keys(solidIngredient).map(key => key.toLowerCase());
 
     
-    // 1. Definir os limites de posicionamento (em %) com base no código do copo
-    let xMin = 15, xMax = 85; // Default horizontal
-    let yMin = 10, yMax = 90; // Default vertical (Topo do container)
-    let size = 15; // Tamanho da imagem do sólido em %
-
-    // Ajustes específicos para formatos não cilíndricos (onde a máscara é mais restrita)
+    // ajustes consoante o copo
     if (glassCode === 'A') { // Cocktail glass (como o do Casino - V-shape, líquido alto)
         xMin = 45; xMax = 50; // Mais estreito
         yMin = 10; yMax = 25; // Mais alto
@@ -418,8 +418,8 @@ function placeSolidGarnishes(cocktail, glassCode) {
         yMin = 10; yMax = 75; 
         size = 15;
     } else if (glassCode === 'D') { // old-fashioned
-        xMin = 25; xMax = 70;
-        yMin = 5; yMax = 70; 
+        xMin = 25; xMax = 65;
+        yMin = 5; yMax = 60; 
         size = 20;
     } else if (glassCode === 'C') { // mug, jar, beer mug (largos)
         xMin = 27; xMax = 55;
