@@ -253,8 +253,9 @@
     "Ingredient1": "Vodka",
     "Ingredient2": "Creme de Banane",
     "Ingredient3": "Orange juice",
-    "Measure1": "20 ml",
-    "Measure2": "10 ml"
+    "Measure1": "30 ml",
+    "Measure2": "30 ml",
+    "Measure3": "90 ml"
   },
   {
     "Drink": "Applejack",
@@ -788,7 +789,8 @@
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yqstxr1479209367.jpg",
     "Ingredient1": "Spiced rum",
     "Ingredient2": "Ginger ale",
-    "Measure1": "29.5 ml"
+    "Measure1": "50 ml",
+    "Measure2": "150 ml"
   },
   {
     "Drink": "Cuba Libra",
@@ -3103,7 +3105,8 @@
     "Measure1": "14.75 ml",
     "Measure2": "14.75 ml",
     "Measure3": "1 cube",
-    "Measure4": "29.5 ml"
+    "Measure4": "29.5 ml",
+    "Measure5": "1.25 ml"
   },
   {
     "Drink": "Long vodka",
@@ -3463,7 +3466,8 @@
     "Ingredient4": "Salt",
     "Measure1": "44.25 ml",
     "Measure2": "14.75 ml",
-    "Measure3": "29.5 ml"
+    "Measure3": "29.5 ml",
+    "Measure4": "1"
   },
   {
     "Drink": "Mauresque",
@@ -3924,6 +3928,7 @@
     "Measure3": "29.5 ml"
   },
   {
+    "Drink": "Orange Oasis",
     "Category": "Ordinary Drink",
     "Alcoholic type": "Alcoholic",
     "Glass type": "Highball glass",
@@ -3935,7 +3940,8 @@
     "Ingredient4": "Ginger ale",
     "Measure1": "14.75 ml",
     "Measure2": "44.25 ml",
-    "Measure3": "118 ml"
+    "Measure3": "118 ml",
+    "Measure4": "40 ml"
   },
   {
     "Drink": "Old Fashioned",
@@ -4406,7 +4412,8 @@
     "Ingredient4": "Ice",
     "Measure1": "29.5 ml",
     "Measure2": "29.5 ml",
-    "Measure3": "29.5 ml"
+    "Measure3": "29.5 ml",
+    "Measure4": "2"
   },
   {
     "Drink": "Pink Panty Pulldowns",
@@ -4418,9 +4425,9 @@
     "Ingredient1": "Sprite",
     "Ingredient2": "Pink Lemonade",
     "Ingredient3": "Vodka",
-    "Measure1": "1000 ml",
-    "Measure2": "60 ml",
-    "Measure3": "2"
+    "Measure1": "88.5 ml",
+    "Measure2": "88.5 ml",
+    "Measure3": "44.25 ml"
   },
   {
     "Drink": "Passion Fruit Martini",
@@ -4438,7 +4445,7 @@
   },
   {
     "Drink": "Pineapple Gingerale Smoothie",
-    "Category": "Other / Unknown",
+    "Category": "Ordinary Drink",
     "Alcoholic type": "Non alcoholic",
     "Glass type": "Highball glass",
     "Inuctions": "Throw everything into a blender and liquify.",
@@ -4447,7 +4454,8 @@
     "Ingredient2": "Pineapple juice",
     "Ingredient3": "Pineapple",
     "Measure1": "6.35 ml",
-    "Measure2": "29.5 ml"
+    "Measure2": "29.5 ml",
+    "Measure3": "1"
   },
   {
     "Drink": "Quentin",
@@ -4516,7 +4524,8 @@
     "Ingredient2": "Grenadine",
     "Ingredient3": "Lemon-lime soda",
     "Measure1": "59 ml",
-    "Measure2": "29.5 ml"
+    "Measure2": "29.5 ml",
+    "Measure3": "29.5 ml"
   },
   {
     "Drink": "Queen Elizabeth",
@@ -4643,7 +4652,8 @@
     "Ingredient4": "Coca-Cola",
     "Measure1": "29.5 ml",
     "Measure2": "59 ml",
-    "Measure3": "20 ml"
+    "Measure3": "20 ml",
+    "Measure4": "21 ml"
   },
   {
     "Drink": "Rum Cooler",
@@ -4881,7 +4891,7 @@
   },
   {
     "Drink": "Raspberry Cooler",
-    "Category": "Other / Unknown",
+    "Category": "Ordinary Drink",
     "Alcoholic type": "Alcoholic",
     "Glass type": "Highball glass",
     "Inuctions": "Pour the raspberry vodka and soda into a highball glass almost filled with ice cubes. Stir well.",
@@ -4890,7 +4900,8 @@
     "Ingredient2": "Lemon-lime soda",
     "Ingredient3": "Ice",
     "Measure1": "59 ml",
-    "Measure2": "118 ml"
+    "Measure2": "118 ml",
+    "Measure3": "2"
   },
   {
     "Drink": "Rum Old-fashioned",
@@ -5011,7 +5022,9 @@
     "Measure1": "355 ml",
     "Measure2": "15 gr",
     "Measure3": "30 ml",
-    "Measure4": "30 ml"
+    "Measure4": "30 ml",
+    "Measure5": "1",
+    "Measure6": "1"
   },
   {
     "Drink": "Stinger",
@@ -5282,7 +5295,9 @@
     "Ingredient3": "Grenadine",
     "Ingredient4": "Orange juice",
     "Measure1": "20 ml",
-    "Measure2": "20 ml"
+    "Measure2": "20 ml",
+    "Measure3": "10 ml",
+    "Measure4": "10 ml"
   },
   {
     "Drink": "Space Odyssey",
@@ -5299,7 +5314,10 @@
     "Ingredient6": "Cherry",
     "Measure1": "25 ml",
     "Measure2": "25 ml",
-    "Measure3": "25 ml"
+    "Measure3": "25 ml",
+    "Measure4": "45 ml",
+    "Measure5": "15 ml",
+    "Measure6": "1"
   },
   {
     "Drink": "Sherry Eggnog",
@@ -5489,7 +5507,8 @@
     "Ingredient4": "Whipped cream",
     "Measure1": "236 ml",
     "Measure2": "118 ml",
-    "Measure3": "118 ml"
+    "Measure3": "118 ml",
+    "Measure4": "50 ml"
   },
   {
     "Drink": "Tequila Fizz",
@@ -5506,7 +5525,8 @@
     "Measure1": "59 ml",
     "Measure2": "15 ml",
     "Measure3": "22.14 ml",
-    "Measure4": "1"
+    "Measure4": "1",
+    "Measure5": "29.5 ml"
   },
   {
     "Drink": "Tequila Sour",
@@ -5807,7 +5827,7 @@
   },
   {
     "Drink": "Vodka Fizz",
-    "Category": "Other / Unknown",
+    "Category": "Cocktail",
     "Alcoholic type": "Alcoholic",
     "Glass type": "Wine glass",
     "Inuctions": "Blend all ingredients, save nutmeg. Pour into large white wine glass and sprinkle nutmeg on top.",
@@ -5820,7 +5840,8 @@
     "Measure1": "59 ml",
     "Measure2": "59 ml",
     "Measure3": "59 ml",
-    "Measure4": "0.8 gr"
+    "Measure4": "0.8 gr",
+    "Measure5": "1"
   },
   {
     "Drink": "Vodka Lemon",
@@ -5981,7 +6002,7 @@
     "Measure3": "25 ml"
   },
   {
-    "Drink": "e",
+    "Drink": "Wine Punch",
     "Category": "Punch / Party Drink",
     "Alcoholic type": "Alcoholic",
     "Glass type": "Collins glass",
@@ -6064,7 +6085,8 @@
     "Ingredient2": "Coffee liqueur",
     "Ingredient3": "Light cream",
     "Measure1": "59 ml",
-    "Measure2": "29.5 ml"
+    "Measure2": "29.5 ml",
+    "Measure3": "7.38 ml"
   },
   {
     "Drink": "Winter Paloma",
