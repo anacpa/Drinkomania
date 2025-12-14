@@ -238,7 +238,7 @@ const ingredientColors = {
   "Spiced rum": "#8F381D",
   "Sprite": "#5BB8E1",
   "St. Germain": "#F1F1E8",
-  "Strawberries": "#e93544ff",
+  "Strawberry": "#e93544ff",
   "Strawberry juice": "#ef1a36ff",
   "Strawberry schnapps": "#D7466D",
   "Sugar": "#FBFBFB",

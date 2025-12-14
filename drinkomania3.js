@@ -23,12 +23,12 @@ const glassTypeMap = [
     { "item": "Champagne flute", "glassType": "I", "style": "width: 20%; max-height: 70%;" },
     { "item": "Balloon glass", "glassType": "E", "style": "width: 50%; max-height: 90%;" },
     { "item": "Hurricane glass", "glassType": "H", "style": "width: 30%; max-height: 70%;" },
-    { "item": "Irish coffee cup", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
+    { "item": "Irish coffee cup", "glassType": "C", "style": "width: 50%; max-height: 90%;" },
     { "item": "Margarita glass", "glassType": "G", "style": "width: 50%; max-height: 80%;" },
     { "item": "Wine glass", "glassType": "E", "style": "width: 50%; max-height: 90%;" },
     { "item": "Pilsner glass", "glassType": "H", "style": "width: 30%; max-height: 70%;" },
     { "item": "Beer mug", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
-    { "item": "Nick and Nora glass", "glassType": "G", "style": "width: 50%; max-height: 80%;" },
+    { "item": "Nick and Nora glass", "glassType": "G", "style": "width: 50%; max-height: 90%;" },
     { "item": "Pint glass", "glassType": "B", "style": "width: 40%; max-height: 90%;" },
     { "item": "Pitcher", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
     { "item": "Cordial glass", "glassType": "H", "style": "width: 30%; max-height: 70%;" },
@@ -289,8 +289,8 @@ function updateRightSection(cocktail) {
         fillHeight = 30;
         topOffset = 57;
     } else if (glassCode === 'G') {  //margarita 
-        fillHeight = 25;
-        topOffset = 44;
+        fillHeight = 27;
+        topOffset = 43.5;
 
     } else if (glassCode === 'E') {  //wine glass
         fillHeight = 50;
@@ -319,19 +319,47 @@ function updateRightSection(cocktail) {
     // 4. Obter dados de proporção (ISTO CONTÉM APENAS OS LÍQUIDOS FILTRADOS)
     const ingredientsData = getCocktailProportions(cocktail);
 
-    // 5. CRIA A LISTA DE INGREDIENTES E MEDIDAS (TODOS: líquidos E sólidos)
+       // 5. CRIA A LISTA DE INGREDIENTES E MEDIDAS (TODOS: líquidos E sólidos)
     // ITERA SOBRE O OBJECTO ORIGINAL DO COCKTAIL (SEM FILTRO)
-    let ingredientsList = '<ul>';
+    let ingredientsList = '<ul class="ingredients-list">';
     for (let i = 1; i <= 15; i++) {
         const ingredient = cocktail[`Ingredient${i}`];
         const measure = cocktail[`Measure${i}`];
 
         if (ingredient && ingredient.trim() !== "") {
             const trimmedIngredient = ingredient.trim();
-            // Assume que 'ingredientColors' está acessível e mapeia a cor
-            const color = typeof ingredientColors !== 'undefined' ? ingredientColors[trimmedIngredient] || '#cccccc' : '#cccccc';
-
-            ingredientsList += `<li><span style="color:${color}; font-size: 1.2em;">■</span> ${trimmedIngredient}: ${measure ? measure.trim() : 'To taste'}</li>`;
+            
+            // Verifica se é um ingrediente sólido
+            const solidKeys = Object.keys(solidIngredient).map(key => key.toLowerCase());
+            const isSolid = solidKeys.includes(trimmedIngredient.toLowerCase());
+            
+            if (isSolid) {
+                // Encontra a chave exata (com capitalização correta)
+                const exactKey = Object.keys(solidIngredient).find(
+                    key => key.toLowerCase() === trimmedIngredient.toLowerCase()
+                );
+                const imagePath = exactKey ? solidIngredient[exactKey] : '';
+                
+                // Adiciona a imagem pequena como marcador
+                ingredientsList += `
+                    <li>
+                        <span class="solid-icon">
+                            <img src="${imagePath}" alt="${trimmedIngredient}">
+                        </span> 
+                        ${trimmedIngredient}: ${measure ? measure.trim() : 'To taste'}
+                    </li>
+                `;
+            } else {
+                // Para ingredientes líquidos, usa a cor - AUMENTADA
+                const color = typeof ingredientColors !== 'undefined' ? ingredientColors[trimmedIngredient] || '#cccccc' : '#cccccc';
+                
+                ingredientsList += `
+                    <li>
+                        <span class="color-square" style="background-color:${color}"></span> 
+                        ${trimmedIngredient}: ${measure ? measure.trim() : 'To taste'}
+                    </li>
+                `;
+            }
         }
     }
     ingredientsList += '</ul>';
@@ -378,11 +406,18 @@ function updateRightSection(cocktail) {
 
         }
     }
+    
+if (glassCode === 'G') {
+    const glassContainer = document.querySelector('.glass-container');
+    if (glassContainer) {
+        glassContainer.classList.add('glass-g-adjusted');
+    }
+}
 
-    // 9. Adicionar os sólidos
+    // 10. Adicionar os sólidos
     placeSolidGarnishes(cocktail, glassCode);
     
-    // 10. ADICIONAR A IMAGEM PLUS18 APENAS SE O COCKTAIL FOR ALCOÓLICO
+    // 11. ADICIONAR A IMAGEM PLUS18 APENAS SE O COCKTAIL FOR ALCOÓLICO
     // Verificar se o cocktail é alcoólico
      const isNonAlcoholic = alcoholicType.toLowerCase() === 'non alcoholic' || 
                           alcoholicType.toLowerCase() === 'non-alcoholic' ||
@@ -455,13 +490,13 @@ function placeSolidGarnishes(cocktail, glassCode) {
         yMin = 10; yMax = 20; // Mais alto
         size = 10;
     } else if (glassCode === 'G') { // Margarita glass (copo em camadas, líquido no topo)
-        xMin = 28; xMax = 65;
-        yMin = 25; yMax = 50;
-        size = 18;
-    } else if (glassCode === 'E') { // Taças de vinho/Champagne (pés longos)
+        xMin = 34; xMax = 65;
+        yMin = 29; yMax = 46;
+        size = 12;
+    } else if (glassCode === 'E') { // Taças de vinho
         xMin = 30; xMax = 60;
         yMin = 5; yMax = 40;
-        size = 15;
+        size = 12;
     } else if (glassCode === 'H') { // Hurricane glass
         xMin = 40; xMax = 50;
         yMin = 5; yMax = 40;
@@ -471,8 +506,8 @@ function placeSolidGarnishes(cocktail, glassCode) {
         yMin = 5; yMax = 40;
         size = 10;
     } else if (glassCode === 'F') { // Shot glass (cheio quase até ao topo)
-        xMin = 35; xMax = 60;
-        yMin = 5; yMax = 70;
+        xMin = 40; xMax = 53;
+        yMin = 5; yMax = 68;
         size = 12;
     } else if (glassCode === 'B') { // highball, collins, pint (cilíndricos)
         xMin = 32; xMax = 60;
@@ -485,7 +520,7 @@ function placeSolidGarnishes(cocktail, glassCode) {
     } else if (glassCode === 'C') { // mug, jar, beer mug (largos)
         xMin = 27; xMax = 55;
         yMin = 5; yMax = 75;
-        size = 15;
+        size = 12;
     }
 
     for (let i = 1; i <= 15; i++) {
