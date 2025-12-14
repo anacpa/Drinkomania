@@ -262,7 +262,7 @@ const ingredientColors = {
   "Vodka": "#EAF4FE",
   "Water": "#BAD3F6",
   "Whipped cream": "#E4DDD4",
-  "Whisky": "#B9772B",
+  "Whiskey": "#B9772B",
   "White Creme de Menthe": "#d3e3d0ff",
   "White Rum": "#00B0E5",
   "White Wine": "#F6D95C",
