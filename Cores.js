@@ -270,7 +270,7 @@ const ingredientColors = {
   "Caramel": "#bf8301ff", 
   "Strawberry juice": "#ff0022ff",
   "Kiwi juice": "#A3D39C",
-  "Papaya juice": "#FF7C6C", 
+  "Papaya juice": "#ffa26cff", 
   "Lillet": "#aa00ffff",
   "Lillet Blanc": "#c730faff",
   "Sherry": "#ac5620ff",
