@@ -17,10 +17,7 @@ header {
     padding-bottom: 1%;
 }
 
-.logo {
-    margin-right: 2%;
-}
-
+/* CSS simplificado - apenas o essencial */
 .input {
     background-color: lightgray;
     padding: 6px;
@@ -28,8 +25,34 @@ header {
     border: none;
     margin: 4px;
     font-size: 0.7rem;
-   
 }
+
+#filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 0.5%;
+}
+
+/* Melhoria 1: Scroll suave na página */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Barra de rolagem suave */
+.grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+
+
 
 .graficos{
     display: flex;
@@ -42,13 +65,6 @@ height: 51%;
     }
 }
 
-#filters{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 0.9rem;
-    margin-bottom: 0.5%;
-}
 
 
 /* ------------------ LAYOUT MAIN ------------------ */
@@ -61,7 +77,7 @@ main {
 
 #left {
     width: 50%;
-    padding: 20px;
+    padding:  10px 20px;
     overflow-y: auto; /* permite scroll se houver muitos cocktails */
 }
 
@@ -70,7 +86,13 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas */
     gap: 30px;
-    padding-right: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 98%;
+
+    /* barra fixa */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
 }
 
 /* Estilo temporário para os círculos dos cocktails */
