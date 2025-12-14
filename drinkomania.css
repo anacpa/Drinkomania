@@ -45,7 +45,7 @@ height: 51%;
 #filters{
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     font-size: 0.9rem;
     margin-bottom: 0.5%;
 }

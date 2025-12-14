@@ -129,7 +129,7 @@ function preload() {
 
 
 function setup() {
-    noCanvas(); 
+    noCanvas();
 
     filteredCocktails = allCocktails;
 
@@ -215,12 +215,12 @@ function applyMask(glassCode) {
         .then(res => res.text())
         .then(svg => {
             if (maskContainer) maskContainer.innerHTML = svg;
- if (glassCode === 'C') {
-            const glassImage = glassContainer.querySelector('.glass-image');
- glassImage.style.transform = 'right('-22%')';
-       
+            if (glassCode === 'C') {
+                const glassImage = glassContainer.querySelector('.glass-image');
+                glassImage.style.transform = 'right(' - 22 % ')';
 
- }
+
+            }
 
             // Aplica a máscara ao líquido
             drinkFill.style.maskImage = `url('${encodedPath}')`;
@@ -235,7 +235,7 @@ function applyMask(glassCode) {
             drinkFill.style.maskPosition = "center bottom";
             drinkFill.style.webkitMaskPosition = "center bottom";
 
-            
+
         })
         .catch(e => {
             console.error("Erro carregando máscara:", maskFileName, e);
@@ -294,11 +294,11 @@ function updateRightSection(cocktail) {
     } else if (glassCode === 'E') {  //wine glass
         fillHeight = 50;
         topOffset = 47;
- } else if (glassCode === 'H') {  //hurricane glass
+    } else if (glassCode === 'H') {  //hurricane glass
         fillHeight = 68;
         topOffset = 32;
 
-        } else if (glassCode === 'I') {  //flute glass
+    } else if (glassCode === 'I') {  //flute glass
         fillHeight = 54;
         topOffset = 46;
 
@@ -373,8 +373,8 @@ function updateRightSection(cocktail) {
             drinkFill.style.left = '28.5%';
             drinkFill.style.height = '92%';
             drinkFill.style.top = '1%';
-            
-       
+
+
         }
     }
 
@@ -396,13 +396,13 @@ function updateRightSection(cocktail) {
  */
 function placeSolidGarnishes(cocktail, glassCode) {
     if (typeof solidIngredient === 'undefined') return;
-    
+
     const glassContainer = document.querySelector('.glass-container');
     if (!glassContainer) return;
 
     const solidKeys = Object.keys(solidIngredient).map(key => key.toLowerCase());
 
-    
+
     // ajustes consoante o copo
     if (glassCode === 'A') { // Cocktail glass () V-shape)
         xMin = 45; xMax = 52; // Mais estreito
@@ -410,76 +410,76 @@ function placeSolidGarnishes(cocktail, glassCode) {
         size = 10;
     } else if (glassCode === 'G') { // Margarita glass (copo em camadas, líquido no topo)
         xMin = 28; xMax = 65;
-        yMin = 25; yMax = 50; 
+        yMin = 25; yMax = 50;
         size = 18;
     } else if (glassCode === 'E') { // Taças de vinho/Champagne (pés longos)
         xMin = 30; xMax = 60;
-        yMin = 5; yMax = 40; 
+        yMin = 5; yMax = 40;
         size = 15;
-         } else if (glassCode === 'H') { // Hurricane glass
+    } else if (glassCode === 'H') { // Hurricane glass
         xMin = 40; xMax = 50;
-        yMin = 5; yMax = 40; 
+        yMin = 5; yMax = 40;
         size = 12;
-           } else if (glassCode === 'I') { // Flute glass
+    } else if (glassCode === 'I') { // Flute glass
         xMin = 42; xMax = 50;
-        yMin = 5; yMax = 40; 
+        yMin = 5; yMax = 40;
         size = 10;
     } else if (glassCode === 'F') { // Shot glass (cheio quase até ao topo)
         xMin = 35; xMax = 60;
-        yMin = 5; yMax = 70; 
+        yMin = 5; yMax = 70;
         size = 12;
     } else if (glassCode === 'B') { // highball, collins, pint (cilíndricos)
         xMin = 32; xMax = 60;
-        yMin = 10; yMax = 70; 
+        yMin = 10; yMax = 70;
         size = 15;
     } else if (glassCode === 'D') { // old-fashioned
         xMin = 25; xMax = 65;
-        yMin = 5; yMax = 60; 
+        yMin = 5; yMax = 60;
         size = 15;
     } else if (glassCode === 'C') { // mug, jar, beer mug (largos)
         xMin = 27; xMax = 55;
-        yMin = 5; yMax = 75; 
+        yMin = 5; yMax = 75;
         size = 15;
-    } 
+    }
 
     for (let i = 1; i <= 15; i++) {
         const ingredient = cocktail[`Ingredient${i}`];
-        
+
         if (ingredient && ingredient.trim() !== "") {
             const trimmedIngredient = ingredient.trim();
             const lowerCaseIngredient = trimmedIngredient.toLowerCase();
 
             if (solidKeys.includes(lowerCaseIngredient)) {
-                
+
                 const originalKey = Object.keys(solidIngredient).find(key => key.toLowerCase() === lowerCaseIngredient);
                 if (!originalKey) continue;
-                
+
                 const imagePath = solidIngredient[originalKey];
-                
+
                 const garnishImg = document.createElement('img');
                 garnishImg.src = imagePath;
-                garnishImg.className = 'solid-garnish'; 
+                garnishImg.className = 'solid-garnish';
 
                 // 2. Cálculo aleatório dentro dos novos limites:
                 // Usamos (Máx - Mín - (Tamanho / 2)) para garantir que a imagem não saia do limite direito/inferior
-                
+
                 // Posição horizontal (Left)
-                const rangeX = xMax - xMin - (size / 2); 
-                const randomLeft = Math.random() * rangeX + xMin; 
-                
+                const rangeX = xMax - xMin - (size / 2);
+                const randomLeft = Math.random() * rangeX + xMin;
+
                 // Posição vertical (Top)
                 const rangeY = yMax - yMin - (size / 2);
-                const randomTop = Math.random() * rangeY + yMin; 
-                
+                const randomTop = Math.random() * rangeY + yMin;
+
                 garnishImg.style.position = 'absolute';
                 garnishImg.style.left = `${randomLeft}%`;
                 garnishImg.style.top = `${randomTop}%`;
-                
-                garnishImg.style.width = `${size}%`; 
+
+                garnishImg.style.width = `${size}%`;
                 garnishImg.style.height = 'auto';
-                garnishImg.style.zIndex = 10; 
+                garnishImg.style.zIndex = 10;
                 garnishImg.style.pointerEvents = 'none';
-                
+
                 glassContainer.appendChild(garnishImg);
             }
         }
