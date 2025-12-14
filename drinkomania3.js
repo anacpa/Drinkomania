@@ -14,28 +14,28 @@ const cupSelect = document.getElementById('cup');
 
 // Mapeamento dos tipos de copos (Glass type) para os arquivos genéricos (A a G)
 const glassTypeMap = [
-    { "item": "Cocktail glass", "glassType": "A", "style": "width: 40%; max-height: 90%;" }, // Exemplo: Copo A é mais estreito
+    { "item": "Cocktail glass", "glassType": "A", "style": "width: 50%; max-height: 90%;" }, // Exemplo: Copo A é mais estreito
     { "item": "Highball glass", "glassType": "B", "style": "width: 40%; max-height: 90%;" }, // 
     { "item": "Collins glass", "glassType": "B", "style": "width: 40%; max-height: 90%;" },
     { "item": "Old-fashioned glass", "glassType": "D", "style": "width: 60%; max-height: 90%;" }, // Exemplo: Copo D é mais largo
-    { "item": "Shot glass", "glassType": "F", "style": "width: 30%; max-height: 100%;" },
-    { "item": "Coffee mug", "glassType": "C", "style": "width: 55%; max-height: 80%;" },
-    { "item": "Champagne flute", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
-    { "item": "Balloon glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
-    { "item": "Hurricane glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
+    { "item": "Shot glass", "glassType": "F", "style": "width: 25%; max-height: 60%;" },
+    { "item": "Coffee mug", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
+    { "item": "Champagne flute", "glassType": "I", "style": "width: 20%; max-height: 70%;" },
+    { "item": "Balloon glass", "glassType": "E", "style": "width: 50%; max-height: 90%;" },
+    { "item": "Hurricane glass", "glassType": "H", "style": "width: 30%; max-height: 70%;" },
     { "item": "Irish coffee cup", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
     { "item": "Margarita glass", "glassType": "G", "style": "width: 50%; max-height: 80%;" },
-    { "item": "Wine glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
-    { "item": "Pilsner glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
+    { "item": "Wine glass", "glassType": "E", "style": "width: 50%; max-height: 90%;" },
+    { "item": "Pilsner glass", "glassType": "H", "style": "width: 30%; max-height: 70%;" },
     { "item": "Beer mug", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
-    { "item": "Nick and Nora glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" },
-    { "item": "Pint glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
-    { "item": "Pitcher", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
-    { "item": "Cordial glass", "glassType": "B", "style": "width: 40%; max-height: 100%;" },
+    { "item": "Nick and Nora glass", "glassType": "G", "style": "width: 50%; max-height: 80%;" },
+    { "item": "Pint glass", "glassType": "B", "style": "width: 40%; max-height: 90%;" },
+    { "item": "Pitcher", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
+    { "item": "Cordial glass", "glassType": "H", "style": "width: 30%; max-height: 70%;" },
     { "item": "Copper Mug", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
     { "item": "Jar", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
     { "item": "Mason jar", "glassType": "C", "style": "width: 50%; max-height: 80%;" },
-    { "item": "Pousse cafe glass", "glassType": "E", "style": "width: 50%; max-height: 100%;" }
+    { "item": "Pousse cafe glass", "glassType": "I", "style": "width: 30%; max-height: 70%;" }
 ];
 
 
@@ -286,7 +286,7 @@ function updateRightSection(cocktail) {
 
     if (glassCode === 'A') { //cocktail glass
         fillHeight = 30;
-        topOffset = 56;
+        topOffset = 57;
     } else if (glassCode === 'G') {  //margarita 
         fillHeight = 25;
         topOffset = 44;
@@ -294,6 +294,13 @@ function updateRightSection(cocktail) {
     } else if (glassCode === 'E') {  //wine glass
         fillHeight = 50;
         topOffset = 47;
+ } else if (glassCode === 'H') {  //hurricane glass
+        fillHeight = 68;
+        topOffset = 32;
+
+        } else if (glassCode === 'I') {  //flute glass
+        fillHeight = 54;
+        topOffset = 46;
 
     } else if (glassCode === 'F') {  //shot glass
         fillHeight = 85;
@@ -397,9 +404,9 @@ function placeSolidGarnishes(cocktail, glassCode) {
 
     
     // ajustes consoante o copo
-    if (glassCode === 'A') { // Cocktail glass (como o do Casino - V-shape, líquido alto)
-        xMin = 45; xMax = 50; // Mais estreito
-        yMin = 10; yMax = 25; // Mais alto
+    if (glassCode === 'A') { // Cocktail glass () V-shape)
+        xMin = 45; xMax = 52; // Mais estreito
+        yMin = 10; yMax = 20; // Mais alto
         size = 10;
     } else if (glassCode === 'G') { // Margarita glass (copo em camadas, líquido no topo)
         xMin = 28; xMax = 65;
@@ -409,22 +416,30 @@ function placeSolidGarnishes(cocktail, glassCode) {
         xMin = 30; xMax = 60;
         yMin = 5; yMax = 40; 
         size = 15;
+         } else if (glassCode === 'H') { // Hurricane glass
+        xMin = 40; xMax = 50;
+        yMin = 5; yMax = 40; 
+        size = 12;
+           } else if (glassCode === 'I') { // Flute glass
+        xMin = 42; xMax = 50;
+        yMin = 5; yMax = 40; 
+        size = 10;
     } else if (glassCode === 'F') { // Shot glass (cheio quase até ao topo)
         xMin = 35; xMax = 60;
         yMin = 5; yMax = 70; 
         size = 12;
     } else if (glassCode === 'B') { // highball, collins, pint (cilíndricos)
-        xMin = 30; xMax = 60;
-        yMin = 10; yMax = 75; 
+        xMin = 32; xMax = 60;
+        yMin = 10; yMax = 70; 
         size = 15;
     } else if (glassCode === 'D') { // old-fashioned
         xMin = 25; xMax = 65;
         yMin = 5; yMax = 60; 
-        size = 20;
+        size = 15;
     } else if (glassCode === 'C') { // mug, jar, beer mug (largos)
         xMin = 27; xMax = 55;
         yMin = 5; yMax = 75; 
-        size = 18;
+        size = 15;
     } 
 
     for (let i = 1; i <= 15; i++) {
