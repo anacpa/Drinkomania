@@ -112,7 +112,7 @@
     "Category": "Other / Unknown",
     "Alcoholic type": "Non alcoholic",
     "Glass type": "Collins glass",
-    "Inuctions": "Stirr. Grnish with maraschino cherry.",
+    "Inuctions": "Stirr. Garnish with maraschino cherry.",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uptxtv1468876415.jpg",
     "Ingredient1": "Orange juice",
     "Ingredient2": "Grapefruit juice",
@@ -222,12 +222,10 @@
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wzdtnn1582477684.jpg",
     "Ingredient1": "Scotch",
     "Ingredient2": "Vermouth",
-    "Ingredient3": "Vermouth",
-    "Ingredient4": "Orange bitters",
+    "Ingredient3": "Orange bitters",
     "Measure1": "44.25 ml",
-    "Measure2": "29.5 ml",
-    "Measure3": "29.5 ml",
-    "Measure4": "1.6 ml"
+    "Measure2": "59 ml",
+    "Measure3": "1.6 ml"
   },
   {
     "Drink": "Aviation",
@@ -301,7 +299,8 @@
     "Measure1": "10 ml",
     "Measure2": "10 ml",
     "Measure3": "44.25 ml",
-    "Measure4": "40 ml"
+    "Measure4": "15 ml",
+    "Measure5": "40 ml"
   },
   {
     "Drink": "Alexander",
@@ -318,7 +317,8 @@
     "Ingredient4": "Nutmeg",
     "Measure1": "14.75 ml",
     "Measure2": "14.75 ml",
-    "Measure3": "59 ml"
+    "Measure3": "59 ml",
+    "Measure4": "0.8 gr"
   },
   {
     "Drink": "Autodafé",
@@ -610,7 +610,7 @@
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/upvtyt1441249023.jpg",
     "Ingredient1": "Corona",
     "Ingredient2": "Bacardi Limon",
-    "Measure1": "1",
+    "Measure1": "335 ml",
     "Measure2": "25 ml"
   },
   {
@@ -769,11 +769,15 @@
     "Inuctions": "Place lime and sugar into old fashioned glass and muddle (mash the two ingredients together using a muddler or a wooden spoon). Fill the glass with ice and add the Cachaça.",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jgvn7p1582484435.jpg",
     "Ingredient1": "Sugar",
-    "Ingredient2": "Lime",
+    "Ingredient2": "Lime juice",
     "Ingredient3": "Cachaça",
+    "Ingredient4": "Lime",
+    "Ingredient5": "Ice",
     "Measure1": "10 gr",
-    "Measure2": "1",
-    "Measure3": "73.75 ml"
+    "Measure2": "12.5 ml",
+    "Measure3": "73.75 ml",
+    "Measure4": "1 slice",
+    "Measure5": "6 cubes"
   },
   {
     "Drink": "Cream Soda",
@@ -901,11 +905,11 @@
     "Glass type": "Collins glass",
     "Inuctions": "Same as Caipirinha but instead of cachaca you add WHITE RUM. It's great!!!!!!!!",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yd47111503565515.jpg",
-    "Ingredient1": "Lime",
+    "Ingredient1": "Lime juice",
     "Ingredient2": "Sugar",
     "Ingredient3": "White Rum",
     "Ingredient4": "Ice",
-    "Measure1": "2",
+    "Measure1": "25 ml",
     "Measure2": "20 gr",
     "Measure3": "88.5 ml",
     "Measure4": "3"
@@ -1087,7 +1091,7 @@
     "Ingredient2": "Lemon juice",
     "Ingredient3": "Lemon",
     "Measure1": "100 ml",
-    "Measure2": "0.35 ml",
+    "Measure2": "3 ml",
     "Measure3": "1"
   },
   {
@@ -1103,7 +1107,7 @@
     "Ingredient2": "Peach Bitters",
     "Ingredient3": "Mint",
     "Measure1": "60 ml",
-    "Measure2": "1.6 ml",
+    "Measure2": "3.6 ml",
     "Measure3": "2"
   },
   {
@@ -1111,28 +1115,16 @@
     "Category": "Beer",
     "Alcoholic type": "Alcoholic",
     "Glass type": "Pint glass",
-    "Inuctions": "Pour the lager first then add the blackcurrant cordial. Top up with the cider. The colour sholud be very dark approaching the colour of Guiness.",
+    "Inuctions": "Pour the lager first then add the blackcurrant cordial. Top up with the cider. The colour should be very dark approaching the colour of Guiness.",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/sxrrqq1454512852.jpg",
     "Ingredient1": "Lager",
     "Ingredient2": "Cider",
     "Ingredient3": "Blackcurrant cordial",
-    "Measure1": "177.5 ml",
-    "Measure2": "177.5 ml",
-    "Measure3": "0.8 ml"
-  },
-  {
-    "Tags": "IBA,Classic,Beach",
-    "Category": "Ordinary Drink",
-    "Alcoholic type": "Alcoholic",
-    "Glass type": "Cocktail glass",
-    "Inuctions": "Pour all ingredients into shaker with ice cubes. Shake well. Strain in chilled cocktail glass.",
-    "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/mrz9091589574515.jpg",
-    "Ingredient1": "Light rum",
-    "Ingredient2": "Lime juice",
-    "Ingredient3": "Powdered sugar",
-    "Measure1": "44.25 ml",
-    "Measure2": "25 ml",
-    "Measure3": "3.5 gr"
+    "Ingredient4": "Apple",
+    "Measure1": "100 ml",
+    "Measure2": "100 ml",
+    "Measure3": "20 ml",
+    "Measure4": "1"
   },
   {
     "Drink": "Danbooka",
@@ -1189,7 +1181,7 @@
     "Ingredient2": "Vermouth",
     "Ingredient3": "Olive",
     "Measure1": "50 ml",
-    "Measure2": "9.83 ml",
+    "Measure2": "10 ml",
     "Measure3": "1"
   },
   {
@@ -1475,8 +1467,8 @@
     "Glass type": "Highball glass",
     "Inuctions": "Mix together. Blend at highest blender speed for about 1 minute. Pour into a glass and drink with a straw. Notes: This works best if everything is cold (if you make fresh coffee, mix it with the milk and let it sit in the fridge for 1/2 hour. If it is not frothy, add more milk, or even just some more milk powder. The froth gradually turns to liquid at the bottom of the glass, so you will find that you can sit and drink this for about 1/2 hour, with more iced coffee continually appearing at the bottom. Very refreshing.",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vqwryq1441245927.jpg",
-    "Ingredient1": "Coffee",
-    "Ingredient2": "Milk",
+    "Ingredient1": "Milk",
+    "Ingredient2": "Coffee",
     "Ingredient3": "Sugar",
     "Measure1": "15 ml",
     "Measure2": "15 ml",
@@ -1572,7 +1564,7 @@
     "Ingredient5": "Apple",
     "Ingredient6": "Soda Water",
     "Measure1": "30 ml",
-    "Measure2": "4 units",
+    "Measure2": "4",
     "Measure3": "30 gr",
     "Measure4": "25 ml",
     "Measure5": "1",
@@ -1696,7 +1688,7 @@
     "Measure1": "44.25 ml",
     "Measure2": "15 ml",
     "Measure3": "44.25 ml",
-    "Measure4": "3 cubes",
+    "Measure4": "3",
     "Measure5": "1",
     "Measure6": "1"
   },
@@ -1773,7 +1765,8 @@
     "Ingredient4": "Baileys irish cream",
     "Measure1": "29.5 ml",
     "Measure2": "29.5 ml",
-    "Measure3": "29.5 ml"
+    "Measure3": "29.5 ml",
+    "Measure4": "29.5 ml"
   },
   {
     "Drink": "Flander's Flake-Out",
@@ -1800,7 +1793,7 @@
     "Ingredient4": "Sugar",
     "Measure1": "59 ml",
     "Measure2": "15 ml",
-    "Measure3": "6 leaves",
+    "Measure3": "6",
     "Measure4": "5 gr"
   },
   {
@@ -1875,7 +1868,7 @@
     "Ingredient1": "Gin",
     "Ingredient2": "Lemon juice",
     "Ingredient3": "Powdered sugar",
-    "Ingredient4": "soda Water",
+    "Ingredient4": "Soda Water",
     "Measure1": "59 ml",
     "Measure2": "25 ml",
     "Measure3": "5 gr",
@@ -1896,9 +1889,9 @@
     "Ingredient5": "Maraschino cherry",
     "Measure1": "59 ml",
     "Measure2": "29.5 ml",
-    "Measure3": "1 cube",
-    "Measure4": "1 slice",
-    "Measure5": "1 unit"
+    "Measure3": "1",
+    "Measure4": "1",
+    "Measure5": "1"
   },
   {
     "Drink": "Gagliardo",
@@ -1958,7 +1951,7 @@
     "Ingredient6": "Lemon peel",
     "Measure1": "1000 ml",
     "Measure2": "125 ml",
-    "Measure3": "3 cubes",
+    "Measure3": "3",
     "Measure4": "1",
     "Measure5": "3",
     "Measure6": "1"
@@ -2011,10 +2004,10 @@
     "Ingredient6": "Cherry",
     "Measure1": "59 ml",
     "Measure2": "29.5 ml",
-    "Measure3": "1 cube",
-    "Measure4": "4 leaves",
-    "Measure5": "1 slice",
-    "Measure6": "1 unit"
+    "Measure3": "1",
+    "Measure4": "4",
+    "Measure5": "1",
+    "Measure6": "1"
   },
   {
     "Drink": "Gin Daisy",
@@ -2243,11 +2236,12 @@
     "Glass type": "Beer mug",
     "Inuctions": "Mix the whisky and Baileys Cream in a beer-glass (at least 50 cl). Fill the rest of the glass with coffee.",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/upusyu1472667977.jpg",
-    "Ingredient1": "Whisky",
+    "Ingredient1": "Whiskey",
     "Ingredient2": "Baileys irish cream",
     "Ingredient3": "Coffee",
     "Measure1": "40 ml",
-    "Measure2": "80 ml"
+    "Measure2": "80 ml",
+    "Measure3": "29.5 ml"
   },
   {
     "Drink": "Honey Bee",
@@ -2495,7 +2489,7 @@
     "Ingredient3": "Lemon juice",
     "Measure1": "44.25 ml",
     "Measure2": "177 ml",
-    "Measure3": "3"
+    "Measure3": "14.75 ml"
   },
   {
     "Drink": "Irish Cream",
@@ -2640,10 +2634,10 @@
     "Ingredient2": "Chambord raspberry liqueur",
     "Ingredient3": "Sugar Syrup",
     "Ingredient4": "Sugar",
-    "Measure1": "2/88.5 ml",
+    "Measure1": "88.5 ml",
     "Measure2": "9.83 ml",
     "Measure3": "5 ml",
-    "Measure4": "2 cubes"
+    "Measure4": "2"
   },
   {
     "Drink": "Jitterbug",
@@ -2662,7 +2656,7 @@
     "Measure2": "25 ml",
     "Measure3": "2.4 ml",
     "Measure4": "25 ml",
-    "Measure5": "1 cube",
+    "Measure5": "1",
     "Measure6": "2.4 ml"
   },
   {
@@ -2759,7 +2753,8 @@
     "Ingredient4": "Whipped cream",
     "Measure1": "30 ml",
     "Measure2": "30 ml",
-    "Measure3": "14.75 ml"
+    "Measure3": "15 ml",
+    "Measure4": "30 ml"
   },
   {
     "Drink": "Just a Moonmint",
@@ -2829,7 +2824,7 @@
     "Inuctions": "Add the crème de cassis to the bottom of the glass, then top up with wine.",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/apneom1504370294.jpg",
     "Ingredient1": "Creme de Cassis",
-    "Ingredient2": "Champagne",
+    "Ingredient2": "Wine",
     "Measure1": "29.5 ml",
     "Measure2": "147.5 ml"
   },
@@ -2859,7 +2854,7 @@
     "Ingredient3": "Lime juice",
     "Measure1": "29.5 ml",
     "Measure2": "29.5 ml",
-    "Measure3": "29.5 ml"
+    "Measure3": "25 ml"
   },
   {
     "Drink": "Kir Royale",
@@ -2899,7 +2894,7 @@
     "Ingredient3": "Sugar",
     "Measure1": "40 ml",
     "Measure2": "200 ml",
-    "Measure3": "1 cube"
+    "Measure3": "1"
   },
   {
     "Drink": "Kioki Coffee",
@@ -2912,7 +2907,8 @@
     "Ingredient2": "Brandy",
     "Ingredient3": "Coffee",
     "Measure1": "29.5 ml",
-    "Measure2": "14.75 ml"
+    "Measure2": "14.75 ml",
+    "Measure3": "29.5 ml"
   },
   {
     "Drink": "Kiwi Martini",
@@ -2964,7 +2960,8 @@
     "Measure1": "25 ml",
     "Measure2": "25 ml",
     "Measure3": "25 ml",
-    "Measure4": "25 ml"
+    "Measure4": "25 ml",
+    "Measure5": "60 ml"
   },
   {
     "Drink": "Kool First Aid",
@@ -3002,7 +2999,7 @@
     "Ingredient3": "Lemon peel",
     "Measure1": "88.5 ml",
     "Measure2": "14.75 ml",
-    "Measure3": "1 unit"
+    "Measure3": "1"
   },
   {
     "Drink": "Kool-Aid Slammer",
@@ -3025,8 +3022,12 @@
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jogv4w1487603571.jpg",
     "Ingredient1": "Kiwi juice",
     "Ingredient2": "Papaya juice",
+    "Ingredient3": "Kiwi",
+    "Ingredient4": "Papaya",
     "Measure1": "59 ml",
-    "Measure2": "59 ml"
+    "Measure2": "59 ml",
+    "Measure3": "1",
+    "Measure4": "1"
   },
   {
     "Drink": "Kill the cold Smoothie",
@@ -3056,7 +3057,7 @@
     "Measure1": "45 ml",
     "Measure2": "30 ml",
     "Measure3": "90 ml",
-    "Measure4": "1 unit"
+    "Measure4": "1"
   },
   {
     "Drink": "Lunch Box",
@@ -3120,7 +3121,7 @@
     "Measure2": "1",
     "Measure3": "3.2 ml",
     "Measure4": "100 ml",
-    "Measure5": "4 cubs"
+    "Measure5": "4"
   },
   {
     "Drink": "Lassi Raita",
@@ -3138,7 +3139,7 @@
     "Measure2": "3 cubes",
     "Measure3": "1",
     "Measure4": "30 ml",
-    "Measure5": "2 cubs"
+    "Measure5": "2"
   },
   {
     "Drink": "Lemouroudji",
@@ -3172,7 +3173,7 @@
     "Measure1": "59 ml",
     "Measure2": "14.75 ml",
     "Measure3": "14.75 ml",
-    "Measure4": "1 unit"
+    "Measure4": "1"
   },
   {
     "Drink": "London Town",
@@ -3316,7 +3317,7 @@
     "Measure3": "14.75 ml",
     "Measure4": "14.75 ml",
     "Measure5": "0.8 ml",
-    "Measure6": "Twist of"
+    "Measure6": "1"
   },
   {
     "Drink": "Lemon Elderflower Spritzer",
@@ -3351,7 +3352,7 @@
     "Ingredient5": "Soda Water",
     "Measure1": "88.5 ml",
     "Measure2": "25 ml",
-    "Measure3": "2 cubes",
+    "Measure3": "2",
     "Measure4": "1",
     "Measure5": "186.5 ml"
   },
@@ -3401,7 +3402,7 @@
     "Ingredient2": "Vermouth",
     "Ingredient3": "Olive",
     "Measure1": "50 ml",
-    "Measure2": "9.83 ml",
+    "Measure2": "30 ml",
     "Measure3": "1"
   },
   {
@@ -3614,7 +3615,8 @@
     "Ingredient4": "Whipped cream",
     "Measure1": "177 ml",
     "Measure2": "59 ml",
-    "Measure3": "30 ml"
+    "Measure3": "30 gr",
+    "Measure4": "15 ml"
   },
   {
     "Drink": "Mango Mojito",
@@ -3818,7 +3820,7 @@
     "Ingredient2": "Sugar",
     "Ingredient3": "Vanilla extract",
     "Ingredient4": "Milk",
-    "Measure1": "10 ml",
+    "Measure1": "10 gr",
     "Measure2": "5 gr",
     "Measure3": "2.5 ml",
     "Measure4": "159 ml"
@@ -4042,7 +4044,7 @@
     "Measure2": "118 ml",
     "Measure3": "1",
     "Measure4": "5 ml",
-    "Measure5": "0.625 ml"
+    "Measure5": "0.625 gr"
   },
   {
     "Drink": "Owen's Grandmother's Revenge",
@@ -4442,9 +4444,10 @@
     "Inuctions": "Throw everything into a blender and liquify.",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/eg9i1d1487603469.jpg",
     "Ingredient1": "Ginger",
-    "Ingredient2": "Pineapple",
+    "Ingredient2": "Pineapple juice",
+    "Ingredient3": "Pineapple",
     "Measure1": "6.35 ml",
-    "Measure2": "1"
+    "Measure2": "29.5 ml"
   },
   {
     "Drink": "Quentin",
@@ -4460,7 +4463,7 @@
     "Measure1": "44.25 ml",
     "Measure2": "14.75 ml",
     "Measure3": "29.5 ml",
-    "Measure4": "0.625 ml"
+    "Measure4": "0.625 gr"
   },
   {
     "Drink": "Queen Bee",
@@ -5187,12 +5190,12 @@
     "Inuctions": "Shake scotch, juice of lime, and powdered sugar with ice and strain into a whiskey sour glass. Decorate with 1/2 slice Lemon, top with the cherry, and serve.",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/0dnb6k1504890436.jpg",
     "Ingredient1": "Scotch",
-    "Ingredient2": "Lime",
+    "Ingredient2": "Lime juice",
     "Ingredient3": "Powdered sugar",
     "Ingredient4": "Lemon",
     "Ingredient5": "Cherry",
     "Measure1": "44.25 ml",
-    "Measure2": "2",
+    "Measure2": "10 ml",
     "Measure3": "2.5 gr",
     "Measure4": "2",
     "Measure5": "1"
@@ -5239,7 +5242,7 @@
     "Measure2": "10 ml",
     "Measure3": "1",
     "Measure4": "1",
-    "Measure5": "topping"
+    "Measure5": "0.8 gr"
   },
   {
     "Drink": "Sol Y Sombra",
@@ -5314,7 +5317,7 @@
     "Measure2": "5 gr",
     "Measure3": "1",
     "Measure4": "177 ml",
-    "Measure5": "topping"
+    "Measure5": "0.8 gr"
   },
   {
     "Drink": "Sweet Bananas",
@@ -5816,7 +5819,8 @@
     "Ingredient5": "Nutmeg",
     "Measure1": "59 ml",
     "Measure2": "59 ml",
-    "Measure3": "59 ml"
+    "Measure3": "59 ml",
+    "Measure4": "0.8 gr"
   },
   {
     "Drink": "Vodka Lemon",
@@ -5885,7 +5889,10 @@
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/rpttur1454515129.jpg",
     "Ingredient1": "Vodka",
     "Ingredient2": "Schweppes Russchian",
-    "Measure1": "59 ml"
+    "Ingredient3": "Lime",
+    "Measure1": "59 ml",
+    "Measure2": "147.5 ml",
+    "Measure3": "1"
   },
   {
     "Drink": "Vermouth Cassis",
@@ -5928,7 +5935,8 @@
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/lmj2yt1504820500.jpg",
     "Ingredient1": "Vodka",
     "Ingredient2": "Tonic Water",
-    "Measure1": "59 ml"
+    "Measure1": "59 ml",
+    "Measure2": "240 ml"
   },
   {
     "Drink": "Valencia Cocktail",
@@ -5952,7 +5960,7 @@
     "Inuctions": "Pour both of the ingredients into a wine goblet with no ice.",
     "DrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yvvwys1461867858.jpg",
     "Ingredient1": "Scotch",
-    "Ingredient2": "Wine",
+    "Ingredient2": "Green Ginger Wine",
     "Measure1": "44.25 ml",
     "Measure2": "29.5 ml"
   },
@@ -5973,7 +5981,7 @@
     "Measure3": "25 ml"
   },
   {
-    "Drink": "Wine Punch",
+    "Drink": "e",
     "Category": "Punch / Party Drink",
     "Alcoholic type": "Alcoholic",
     "Glass type": "Collins glass",
