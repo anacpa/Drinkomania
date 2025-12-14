@@ -151,7 +151,58 @@ function setup() {
     updateRightSection(null);
 }
 
-
+ 
+function renderCocktails(cocktails) {
+    gridElement.innerHTML = '';
+    
+    cocktails.forEach((cocktail, index) => {
+        const circle = document.createElement('div');
+        circle.classList.add('item');
+        
+        // Evento de clique
+        circle.addEventListener('click', () => {
+            // Remove seleção de todos os círculos
+            document.querySelectorAll('.item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Seleciona este círculo
+            circle.classList.add('selected');
+            
+            // Atualiza cocktail selecionado e mostra detalhes
+            selectedCocktail = cocktail;
+            updateRightSection(cocktail);
+        });
+        
+        gridElement.appendChild(circle);
+    });
+}
+//filtros de selecionado
+function applyFilters() {
+    const selectedIngredient = ingredientSelect.value;
+    const selectedAlcohol = alcoholSelect.value;
+    const selectedCup = cupSelect.value;
+    
+    // Limpa seleção
+    selectedCocktail = null;
+    
+    // Filtra cocktails (mantenha seu código atual de filtragem aqui)
+    filteredCocktails = allCocktails.filter(cocktail => {
+        // SEU CÓDIGO DE FILTRAGEM ATUAL
+        let matches = true;
+        // ... implemente sua lógica de filtragem ...
+        return matches;
+    });
+    
+    // Remove seleção visual
+    document.querySelectorAll('.item').forEach(item => {
+        item.classList.remove('selected');
+    });
+    
+    // Renderiza nova lista
+    renderCocktails(filteredCocktails);
+    updateRightSection(null);
+}
 
 
 // =========================================================================
@@ -251,6 +302,10 @@ function updateRightSection(cocktail) {
     rightSection.innerHTML = ''; // Limpa o conteúdo
 
     if (!cocktail) {
+// Remove seleção quando não há cocktail
+        document.querySelectorAll('.item').forEach(item => {
+            item.classList.remove('selected');
+        });
 
         // Exibe o texto inicial
         rightSection.innerHTML = `
@@ -272,7 +327,20 @@ function updateRightSection(cocktail) {
         `;
         return;
     }
-
+ // Remove seleção anterior
+    document.querySelectorAll('.item').forEach(item => {
+        item.classList.remove('selected');
+    });
+    
+    // Encontra e seleciona o círculo correspondente
+    const index = filteredCocktails.findIndex(c => c.Drink === cocktail.Drink);
+    if (index !== -1) {
+        const circle = document.querySelectorAll('.item')[index];
+        if (circle) {
+            circle.classList.add('selected');
+        }
+    }
+    
     const glassType = cocktail['Glass type'] || 'Unknown Glass';
 
     // 1. Obter a letra do copo (A, B, C, etc.)

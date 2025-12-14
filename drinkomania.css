@@ -109,12 +109,35 @@ main {
     background-color: #ffd966;
     border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    
+    transition: transform 0.2s ease, box-shadow 0.3s ease
+}
+/* Alternativa usando outline em vez de border */
+.grid .item {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #ffd966;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    outline: 4px solid transparent; /* Outline em vez de border */
+    outline-offset: 0;
 }
 
 .grid .item:hover {
     transform: scale(1.08);
+    box-shadow: 
+        0 0 5px rgba(255, 0, 132),
+        0 0 10px rgba(255, 0, 132, 0.8);
 }
+
+.grid .item.selected {
+    transform: none !important;
+    box-shadow: none !important;
+    outline: 4px solid #ff178f; /* Outline rosa quando selecionado */
+}
+
+
 
 
 /* Right Section (texto informativo / toggle futuro) */
