@@ -263,7 +263,7 @@ function updateRightSection(cocktail) {
                períodos e estilos diferentes, evoluindo das fórmulas simples do século XIX 
                até chegar às criações complexas e artísticas dos dias de hoje. </p>
             <p>
-               Explora mais de 400 cocktails a partir dos filtros acima. Podes clicar também nos círculos à esquerda 
+               Explora mais de 350 cocktails a partir dos filtros acima. Podes clicar também nos círculos à esquerda 
                para ver os detalhes de cada cocktail, incluindo ingredientes, proporções e instruções.
             </p>
             <p> <br><br>
