@@ -263,7 +263,7 @@ function updateRightSection(cocktail) {
                períodos e estilos diferentes, evoluindo das fórmulas simples do século XIX 
                até chegar às criações complexas e artísticas dos dias de hoje. </p>
             <p>
-               Explora mais de 350 cocktails a partir dos filtros acima. Podes clicar também nos círculos à esquerda 
+               Explora mais de 400 cocktails a partir dos filtros acima. Podes clicar também nos círculos à esquerda 
                para ver os detalhes de cada cocktail, incluindo ingredientes, proporções e instruções.
             </p>
             <p> <br><br>
@@ -279,6 +279,7 @@ function updateRightSection(cocktail) {
     const glassMapping = getGlassCode(glassType); // Agora retorna o objeto
     const glassCode = glassMapping.glassType;
     const imageStyle = glassMapping.style;
+        const alcoholicType = cocktail['Alcoholic type'] || '';
 
     // 2. Determinar a altura de preenchimento e o ajuste vertical 
     let fillHeight;
@@ -346,7 +347,7 @@ function updateRightSection(cocktail) {
                 <img src="${cupImageURL}" alt="${glassType}" class="glass-image" style="${imageStyle}">
             </div>
 
-            <p><strong>Type:</strong> ${cocktail['Alcoholic type'] || 'N/A'}</p>
+           <!--  <p><strong>Type:</strong> ${cocktail['Alcoholic type'] || 'N/A'}</p> --> 
             <p><strong>Category:</strong> ${cocktail.Category || 'N/A'}</p>
             <p><strong>Glass:</strong> ${glassType}</p>
             
@@ -380,6 +381,51 @@ function updateRightSection(cocktail) {
 
     // 9. Adicionar os sólidos
     placeSolidGarnishes(cocktail, glassCode);
+    
+    // 10. ADICIONAR A IMAGEM PLUS18 APENAS SE O COCKTAIL FOR ALCOÓLICO
+    // Verificar se o cocktail é alcoólico
+     const isNonAlcoholic = alcoholicType.toLowerCase() === 'non alcoholic' || 
+                          alcoholicType.toLowerCase() === 'non-alcoholic' ||
+                          alcoholicType.toLowerCase().includes('non alcoholic');
+
+    if (isNonAlcoholic) {
+        const ageRestrictionImg = document.createElement('img');
+        ageRestrictionImg.src = 'images/noAlcohol.png';
+        ageRestrictionImg.alt = 'Non-alcoholic drink';
+        ageRestrictionImg.className = 'age-restriction-img';
+        ageRestrictionImg.style.position = 'absolute';
+        ageRestrictionImg.style.top = '120px';  // Alterado para canto superior
+        ageRestrictionImg.style.right = '20px';
+        ageRestrictionImg.style.width = '50px';
+        ageRestrictionImg.style.height = 'auto';
+        ageRestrictionImg.style.zIndex = '100';
+        ageRestrictionImg.style.opacity = '0.7';
+        
+        // Adiciona um pequeno texto ou tooltip se quiser
+        ageRestrictionImg.title = 'Non-alcoholic cocktail';
+        
+        rightSection.appendChild(ageRestrictionImg);
+    }
+     const isAlcoholic = alcoholicType.toLowerCase() !== 'non alcoholic' && 
+                       alcoholicType.toLowerCase() !== 'non-alcoholic' &&
+                       alcoholicType.toLowerCase() !== 'non alcoholic' &&
+                       alcoholicType !== '' &&
+                       alcoholicType.toLowerCase() !== 'n/a';
+
+    if (isAlcoholic) {
+        const ageRestrictionImg = document.createElement('img');
+        ageRestrictionImg.src = 'images/plus18.png';
+        ageRestrictionImg.alt = 'Plus 18 age restriction';
+        ageRestrictionImg.className = 'age-restriction-img';
+        ageRestrictionImg.style.position = 'absolute';
+        ageRestrictionImg.style.top = '120px';
+        ageRestrictionImg.style.right = '20px';
+        ageRestrictionImg.style.width = '50px';
+        ageRestrictionImg.style.height = 'auto';
+        ageRestrictionImg.style.zIndex = '100';
+        ageRestrictionImg.style.opacity = '0.7';
+        rightSection.appendChild(ageRestrictionImg);
+    }
 }
 
 
