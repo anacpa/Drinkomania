@@ -566,3 +566,38 @@ function placeSolidGarnishes(cocktail, glassCode) {
         }
     }
 }
+
+/**
+ * Atualiza a seleção visual dos círculos
+ * Remove a seleção de todos e seleciona apenas o círculo correspondente ao cocktail
+ */
+function updateCircleSelection(cocktail) {
+    // Remove a classe 'selected' de TODOS os círculos
+    const allCircles = document.querySelectorAll('.grid .item');
+    allCircles.forEach(circle => {
+        circle.classList.remove('selected');
+    });
+    
+    // Se houver um cocktail selecionado, encontra e seleciona o círculo correspondente
+    if (cocktail) {
+        // Encontra o índice do cocktail na lista filtrada
+        const cocktailIndex = filteredCocktails.findIndex(c => 
+            c.Drink === cocktail.Drink
+        );
+        
+        if (cocktailIndex !== -1) {
+            // Seleciona o círculo correspondente
+            const circleToSelect = document.querySelectorAll('.grid .item')[cocktailIndex];
+            if (circleToSelect) {
+                circleToSelect.classList.add('selected');
+                
+                // Rolagem suave para o elemento selecionado (opcional)
+                circleToSelect.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'center'
+                });
+            }
+        }
+    }
+}
